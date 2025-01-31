@@ -1,0 +1,10 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+pnpm format
+
+pnpm lint
+if [ $? -ne 0 ]; then
+  echo "Error encountered during prettier fix."
+  exit 1
+fi
