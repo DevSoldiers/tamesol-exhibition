@@ -11,6 +11,9 @@ export default {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        BroadcastChannel: '#f28f37',
+        secondarybrand: '#f7a838',
+        redishcolor: '#b51f1b',
       },
     },
   },
