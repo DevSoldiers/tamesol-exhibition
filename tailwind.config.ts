@@ -59,6 +59,7 @@ export default {
         'brand-gradient-var1': 'linear-gradient(to right, #b51f1b,#f7a838, #f28f37)',
         'brand-gradient-var2': 'linear-gradient(to right, #722f37,#f7a838, #f28f37)',
         'brand-gradient-var3': 'linear-gradient(to right, #722f37,#f7a838, #f28f37)',
+        'top-header-bg': "url('/hero_exhibition_placeholder.jpeg')"
       },
       borderRadius: {
         lg: 'var(--radius)',

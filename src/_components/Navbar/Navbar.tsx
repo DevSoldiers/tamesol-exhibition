@@ -57,7 +57,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-brand-gradient-var1 text-white px-4 md:px-10 py-5 rounded-full shadow-lg max-w-[1480px] mx-auto flex items-center justify-between relative max-h-[70px]">
+    <nav className="bg-brand-gradient-var1 text-white px-4 md:px-10 py-5 rounded-full shadow-lg mx-auto flex items-center justify-between relative max-h-[70px]">
       {/* Logo */}
       <div
         className="relative w-[150px] h-[80px] flex items-center justify-center hover:cursor-pointer"
