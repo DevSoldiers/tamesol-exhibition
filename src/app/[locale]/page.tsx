@@ -14,6 +14,7 @@ export default function Home() {
         {/* nav and hero section */}
         <article className="w-full px-14 py-8 z-40 relative">
           <Navbar />
+          {/* <HeroSection /> */}
         </article>
       </section>
     </main>

@@ -5,6 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { NextButton, PrevButton, usePrevNextButtons } from '../Buttons/EmblaArrowButtons';
 import { DotButton, useDotButton } from '../Buttons/Embla_Dot_Buttons';
 import '../../_styles/carousel.css';
+import HeroSection from '.';
 type PropType = {
   slides: number[];
   options?: EmblaOptionsType;
@@ -25,10 +26,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         <div className="embla__container">
           {slides.map((index) => (
             <div
-              className="relative embla__slide bg-sky-400 h-screen bg-top-header-bg bg-cover bg-no-repeat"
+              className="relative embla__slide bg-sky-400 h-screen bg-top-header-bg bg-cover bg-no-repeat pt-32 px-14"
               key={index}
             >
-              <div className="absolute inset-0 bg-brand-gradient-var1 opacity-30"></div>
+              {/* overlay cover */}
+              <div className="absolute inset-0 bg-brand-gradient-var1 opacity-50"></div>
+              <HeroSection />
             </div>
           ))}
         </div>
