@@ -5,7 +5,7 @@ export default function Home() {
   const t = useTranslations('HomePage');
   console.log('t==>', t('title'));
   return (
-    <main className='px-14 py-8'>
+    <main className="px-14 py-8">
       {/* nav section */}
       <Navbar />
     </main>
