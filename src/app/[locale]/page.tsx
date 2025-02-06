@@ -8,11 +8,11 @@ export default function Home() {
   return (
     <main className="">
       {/* nav and hero wrapper */}
-      <section className='relative'>
+      <section className="relative">
         {/* carousel background section */}
         <EmblaCarousel slides={[1, 2, 3]} />
         {/* nav and hero section */}
-        <article className='w-full px-14 py-8 z-40 relative'>
+        <article className="w-full px-14 py-8 z-40 relative">
           <Navbar />
         </article>
       </section>
