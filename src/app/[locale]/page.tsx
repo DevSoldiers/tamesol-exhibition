@@ -10,7 +10,7 @@ export default function Home() {
       {/* nav and hero wrapper */}
       <section className="relative">
         {/* carousel background section */}
-        <EmblaCarousel slides={[1, 2, 3]} />
+        <EmblaCarousel slides={[1, 2, 3]} options={{ loop: true }} />
         {/* nav and hero section */}
         <article className="w-full px-14 py-8 z-40 relative">
           <Navbar />

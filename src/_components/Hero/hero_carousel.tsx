@@ -2,6 +2,7 @@
 import React from 'react';
 import { EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay'
 import { NextButton, PrevButton, usePrevNextButtons } from '../Buttons/EmblaArrowButtons';
 import { DotButton, useDotButton } from '../Buttons/Embla_Dot_Buttons';
 import '../../_styles/carousel.css';
@@ -13,7 +14,7 @@ type PropType = {
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
   const { slides, options } = props;
-  const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi);
 
