@@ -8,14 +8,11 @@ export default function Home() {
   return (
     <main className="">
       {/* nav and hero wrapper */}
-      <section className="relative overflow-x-hidden h-screen">
+      <section className="relative overflow-x-hidden h-screen max-md:min-h-[65vh] max-md:h-full">
         {/* carousel background section */}
         <EmblaCarousel slides={[1, 2, 3]} options={{ loop: false }} />
         {/* nav and hero section */}
         <Navbar />
-        <article className="w-full px-14 max-md:px-3 py-8 z-40 relative">
-          {/* <HeroSection /> */}
-        </article>
       </section>
     </main>
   );

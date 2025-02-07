@@ -102,6 +102,33 @@ export default function Navbar() {
           <span className="w-8 h-1 bg-white rounded block opacity-0"></span>
           <span className="w-8 h-1 bg-white rounded block -rotate-45 -translate-y-2 transition-transform duration-300"></span>
         </button>
+
+        {/* Mobile Menu Links */}
+        <div className="flex flex-col space-y-6 mt-8">
+          {navLinks.map((link: { label: string; src: string }) => (
+            <Link
+              href={link.src}
+              key={link.label}
+              onClick={() => setIsOpen(false)}
+              className="text-gray-700 hover:text-white text-lg font-medium transition-colors duration-300"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+
+        {/* Mobile Auth Buttons */}
+        <div className="flex flex-col space-y-4 mt-12">
+          <Button variant="secondary" className="bg-white text-black w-full py-4 hover:bg-gray-100">
+            Sign Up
+          </Button>
+          <Button
+            variant="outline"
+            className="bg-transparent border-white text-white w-full py-4 hover:bg-white/10"
+          >
+            Sign In
+          </Button>
+        </div>
       </div>
     </nav>
   );
