@@ -22,12 +22,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     usePrevNextButtons(emblaApi);
 
   return (
-    <section className="embla">
+    <section className="embla bg-slate-500">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {slides.map((index) => (
             <div
-              className="relative embla__slide bg-sky-400 h-screen bg-top-header-bg bg-cover bg-no-repeat pt-32 px-14"
+              className="relative embla__slide h-screen bg-top-header-bg bg-cover bg-no-repeat pt-32 px-14"
               key={index}
             >
               {/* overlay cover */}

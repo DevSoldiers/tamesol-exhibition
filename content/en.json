@@ -2,5 +2,27 @@
   "HomePage": {
     "title": "Hello world!",
     "about": "Go to the about page"
-  }
+  },
+  "Navbar-links": [
+    {
+      "label": "Home",
+      "src": "/"
+    },
+    {
+      "label": "About Us",
+      "src": "/about"
+    },
+    {
+      "label": "Services",
+      "src": "/services"
+    },
+    {
+      "label": "Features",
+      "src": "/features"
+    },
+    {
+      "label": "Contact",
+      "src": "/contact"
+    }
+  ]
 }

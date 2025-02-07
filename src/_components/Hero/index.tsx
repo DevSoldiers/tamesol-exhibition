@@ -3,9 +3,9 @@ import HeroRight from './RightSection.hero';
 
 export default function HeroSection() {
   return (
-    <section className="bg-transparent relative z-[1000] px-14 grid grid-cols-2 gap-5 mt-16 font-manrope">
+    <div className="relative z-[1000] px-14 h-full grid grid-cols-2 items-center">
       <HeroLeft />
       <HeroRight />
-    </section>
+    </div>
   );
 }
