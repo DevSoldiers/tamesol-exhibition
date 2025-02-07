@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Manrope } from 'next/font/google';
 import './globals.css';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
@@ -14,6 +14,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+});
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-manrope',
 });
 
 export const metadata: Metadata = {
@@ -37,7 +43,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} antialiased`}
+      >
         <NextIntlClientProvider messages={content}>{children}</NextIntlClientProvider>
       </body>
     </html>

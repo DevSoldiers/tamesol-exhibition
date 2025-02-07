@@ -2,9 +2,11 @@
 import React from 'react';
 import { EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 import { NextButton, PrevButton, usePrevNextButtons } from '../Buttons/EmblaArrowButtons';
 import { DotButton, useDotButton } from '../Buttons/Embla_Dot_Buttons';
 import '../../_styles/carousel.css';
+import HeroSection from '.';
 type PropType = {
   slides: number[];
   options?: EmblaOptionsType;
@@ -12,7 +14,7 @@ type PropType = {
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
   const { slides, options } = props;
-  const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi);
 
@@ -25,10 +27,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         <div className="embla__container">
           {slides.map((index) => (
             <div
-              className="relative embla__slide bg-sky-400 h-screen bg-top-header-bg bg-cover bg-no-repeat"
+              className="relative embla__slide bg-sky-400 h-screen bg-top-header-bg bg-cover bg-no-repeat pt-32 px-14"
               key={index}
             >
-              <div className="absolute inset-0 bg-brand-gradient-var1 opacity-30"></div>
+              {/* overlay cover */}
+              <div className="absolute inset-0 bg-brand-gradient-var4 opacity-80"></div>
+              <HeroSection />
             </div>
           ))}
         </div>

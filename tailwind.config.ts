@@ -59,12 +59,16 @@ export default {
         'brand-gradient-var1': 'linear-gradient(to right, #b51f1b,#f7a838, #f28f37)',
         'brand-gradient-var2': 'linear-gradient(to right, #722f37,#f7a838, #f28f37)',
         'brand-gradient-var3': 'linear-gradient(to right, #722f37,#f7a838, #f28f37)',
+        'brand-gradient-var4': 'linear-gradient(to right, #b51f1b,#f7a838, #f28e3700,#f28e3700)',
         'top-header-bg': "url('/hero_exhibition_placeholder.jpeg')",
       },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      fontFamily: {
+        manrope: ['var(--font-manrope)'],
       },
     },
   },
