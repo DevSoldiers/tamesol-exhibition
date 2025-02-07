@@ -2,6 +2,8 @@
 
 pnpm format
 
+git add .
+
 pnpm lint
 if [ $? -ne 0 ]; then
   echo "Error encountered during prettier fix."

@@ -2,7 +2,7 @@
 import React from 'react';
 import { EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay'
+import Autoplay from 'embla-carousel-autoplay';
 import { NextButton, PrevButton, usePrevNextButtons } from '../Buttons/EmblaArrowButtons';
 import { DotButton, useDotButton } from '../Buttons/Embla_Dot_Buttons';
 import '../../_styles/carousel.css';
@@ -31,7 +31,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
               key={index}
             >
               {/* overlay cover */}
-              <div className="absolute inset-0 bg-brand-gradient-var1 opacity-50"></div>
+              <div className="absolute inset-0 bg-brand-gradient-var4 opacity-80"></div>
               <HeroSection />
             </div>
           ))}
