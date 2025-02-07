@@ -22,12 +22,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     usePrevNextButtons(emblaApi);
 
   return (
-    <section className="embla bg-slate-500">
+    <section className="embla bg-orange-200 h-full">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {slides.map((index) => (
             <div
-              className="relative embla__slide h-screen bg-top-header-bg bg-cover bg-no-repeat pt-32 px-14"
+              className="relative embla__slide h-screen max-md:h-auto bg-top-header-bg bg-cover bg-no-repeat pt-32 px-14"
               key={index}
             >
               {/* overlay cover */}
@@ -38,7 +38,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         </div>
       </div>
 
-      <div className="embla__controls">
+      <div className="embla__controls grid max-md:hidden">
         <div className="embla__buttons">
           <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
           <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />

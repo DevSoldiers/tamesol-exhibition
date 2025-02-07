@@ -23,7 +23,7 @@ export default function HeroRight() {
   }, []);
 
   return (
-    <div className="absolute right-24 bottom-0">
+    <div className="absolute right-24 bottom-0 max-sm:hidden">
       <Image
         src="/headphone_girl.png"
         width={600}
