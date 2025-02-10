@@ -1,61 +1,33 @@
 'use client';
-import React from 'react';
+import '../../_styles/carousel.css';
+
 import { EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
-import { NextButton, PrevButton, usePrevNextButtons } from '../Buttons/EmblaArrowButtons';
-import { DotButton, useDotButton } from '../Buttons/Embla_Dot_Buttons';
-import '../../_styles/carousel.css';
-import HeroSection from '.';
+// import Autoplay from 'embla-carousel-autoplay'
+
 type PropType = {
-  slides: number[];
+  slides?: number[];
   options?: EmblaOptionsType;
 };
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
-  const { slides, options } = props;
-  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
-
-  const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi);
-
-  const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
-    usePrevNextButtons(emblaApi);
+  const { slides = [0, 1, 2], options = { loop: true } } = props ?? {};
+  const [emblaRef] = useEmblaCarousel(options);
 
   return (
-    <section className="embla bg-orange-200 h-full">
+    <section className="embla bg-orange-200 absolute inset-0 h-[90dvh]">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
           {slides.map((index) => (
-            <div
-              className="relative embla__slide h-screen max-md:h-auto bg-top-header-bg bg-cover bg-no-repeat pt-32 px-14"
-              key={index}
-            >
-              {/* overlay cover */}
-              <div className="absolute inset-0 bg-brand-gradient-var4 opacity-80"></div>
-              <HeroSection />
+            // <div className="embla__slide bg-top-header-bg bg-no-repeat" key={index}>
+            <div className="embla__slide bg-no-repeat" key={index}>
+              {/* <div className="bg-violet-200 absolute z-50 inset-0">Slider</div> */}
+              <div className="embla__slide__number">{index + 1}</div>
             </div>
           ))}
         </div>
       </div>
-
-      <div className="embla__controls grid max-md:hidden">
-        <div className="embla__buttons">
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-        </div>
-
-        <div className="embla__dots">
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              onClick={() => onDotButtonClick(index)}
-              className={'embla__dot'.concat(
-                index === selectedIndex ? ' embla__dot--selected' : ''
-              )}
-            />
-          ))}
-        </div>
-      </div>
+      <div className="bg-white absolute bottom-0 right-0 left-0 h-[36px] text-white rounded-tr-[40%] rounded-tl-[40%]"></div>
     </section>
   );
 };
