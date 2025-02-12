@@ -3,6 +3,7 @@ import Navbar from '@/_components/Navbar/Navbar';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import YznanuCards from '@/components/SlidingCards';
+import ClientsCarousel from '@/components/Sliding_Clients';
 // import { useTranslations } from 'next-intl';
 // import Image from 'next/image';
 
@@ -95,6 +96,44 @@ export default function Home() {
             className="w-32 sm:w-40 md:w-48 lg:w-52"
           />
         </article>
+      </section>
+
+      {/* megbya ticketoch */}
+      <section className="megbya_ticketoch px-3 md:px-14 flex flex-col gap-4 bg-[rgb(247,168,56)] md:text-[64px] py-4 md:py-[80px]">
+        <p className="mb-3 text-white p-0 text-3xl text-center md:text-left">አዲስ ነገር ኤግዚቢሽን መግቢያ ትኬቶች</p>
+        <article className="card_wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+          {Array(3)
+            .fill(0)
+            .map((_, key) => (
+              <article className="max-w-sm rounded overflow-hidden shadow-lg bg-orange-200 md:max-w-full md:w-[95%]" key={key}>
+                <Image
+                  width={200}
+                  height={200}
+                  className="w-full"
+                  src="/hero_exhibition_placeholder.jpeg"
+                  alt="Sunset in the mountains"
+                />
+                <div className="px-6 py-4">
+                  <div className="font-bold text-xl mb-2">
+                    <p>አዲስ ነገር ኤክስፖ</p>
+                  </div>
+                  <p className="text-gray-700 text-base">
+                    የአዲስ ነገር ኤክስፖን የመግቢያ ትኬት ቀድመዉ 100 ብር ብቻ ! በመግዛት የልዩ ቅናሽ ተጠቃሚ ይሁኑ፡፡ አዲስ ነገር ኤክስፖ
+                    በዉስጡ የተለያዩ የሽመታ፣ የመዝናኛ፣ የምግብ እና መጠጥ፣ የጤና እና ዉበት፣ የቢዝነስ እና ሪልእስቴት መንደሮችን የያዘ ሲሆን
+                    የአዲስ መኪና ሽልማት እንዲሁም በየቀኑ አዳዲስ ልዩ ሽልማቶች አሉት ፡፡ እርስዎ እድለኛ ቢሆኑስ ?{' '}
+                  </p>
+                </div>
+                <div className="px-6 pt-4 pb-2">
+                  <Button className="text-white px-4 py-5 bg-[#f59c38]">ትኬትዎን ይቁረጡ</Button>
+                </div>
+              </article>
+            ))}
+        </article>
+      </section>
+
+      {/* sliding clients */}
+      <section className="yznanu_yshemtu_section px-3 md:px-14 flex flex-col gap-4 bg-[rgb(247,168,56)] md:text-[64px] py-4 md:py-[80px]">
+        <ClientsCarousel />
       </section>
     </main>
   );
