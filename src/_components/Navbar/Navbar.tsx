@@ -42,7 +42,7 @@ export default function Navbar() {
       <section className="w-full px-14 max-md:px-3 z-40 relative">
         <article
           ref={navRef}
-          className="main_nav_article_top bg-glass-morph-bg text-white px-4 md:px-10 py-5 max-md:py-1 rounded-full max-md:rounded-md shadow-lg mx-auto flex items-center justify-between relative max-h-[70px] transition-colors duration-500"
+          className="main_nav_article_top bg-glass-morph-bg text-white px-4 md:px-10 py-5 max-md:py-1 rounded-full max-md:rounded-md shadow-lg mx-auto flex items-center justify-between relative max-h-[70px] transition-colors duration-200"
         >
           <div className="relative w-[150px] h-[80px] flex items-center justify-center hover:cursor-pointer transition-transform duration-300 hover:scale-110">
             <Image

@@ -2,6 +2,7 @@ import EmblaCarousel from '@/_components/Hero/hero_carousel';
 import Navbar from '@/_components/Navbar/Navbar';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import YznanuCards from '@/components/SlidingCards';
 // import { useTranslations } from 'next-intl';
 // import Image from 'next/image';
 
@@ -20,11 +21,11 @@ export default function Home() {
       {/* card section */}
       <section className="px-3 md:px-14 main_card_wrapper flex flex-col gap-4 -mt-20">
         <p className="font-bold text-xl">አዲስ ነገር ኤግዚቢሽን መግቢያ ትኬቶች</p>
-        <article className="card_wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article className="card_wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
           {Array(3)
             .fill(0)
             .map((_, key) => (
-              <article className="max-w-sm rounded overflow-hidden shadow-lg" key={key}>
+              <article className="max-w-sm rounded overflow-hidden shadow-lg bg-orange-200 md:max-w-full md:w-[95%]" key={key}>
                 <Image
                   width={200}
                   height={200}
@@ -48,6 +49,24 @@ export default function Home() {
               </article>
             ))}
         </article>
+      </section>
+      {/* eyeteznanu yshemtu section */}
+      <section className="yznanu_yshemtu_section px-3 md:px-14 mt-5 flex flex-col gap-4 bg-[rgb(247,168,56)] md:text-[64px] py-7 md:py-[80px]">
+        <p className="mb-3 text-white p-0 text-3xl text-center">እየተዝናኑ ይሸምቱ!</p>
+        <div className="ygobgnu_wrapper flex flex-col md:flex-row gap-5 justify-between">
+          <article className="w-full max-h-[400px] h bg-violet-500 rounded-md">
+            <video width="100%" height="150%" autoPlay loop playsInline muted>
+              <source src="/expolanding.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </article>
+          <article className="w-full h-[400px] bg-violet-500 rounded-md"></article>
+        </div>
+      </section>
+
+      <section className="yznanu_yshemtu_section px-3 md:px-14 flex flex-col gap-4 bg-[rgb(247,168,56)] md:text-[64px] py-4 md:py-[80px]">
+        <p className="mb-3 text-white p-0 text-3xl text-center md:text-left">እየተዝናኑ ይሸምቱ!</p>
+        <YznanuCards />
       </section>
     </main>
   );

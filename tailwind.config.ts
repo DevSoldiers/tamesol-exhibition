@@ -63,6 +63,7 @@ export default {
         'glass-morph-bg':
           'linear-gradient(90deg, rgba(181, 31, 27, 0.25) 0%, rgba(242, 143, 55, 0.25) 100%)',
         'top-header-bg': "url('/hero_exhibition_placeholder.jpeg')",
+        'svg-curvy-bg': "url('/curvy_card.svg')",
       },
       borderRadius: {
         lg: 'var(--radius)',
