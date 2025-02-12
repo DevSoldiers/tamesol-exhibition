@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import YznanuCards from '@/components/SlidingCards';
 import ClientsCarousel from '@/components/Sliding_Clients';
+import Footer from '@/components/Footer';
 // import { useTranslations } from 'next-intl';
 // import Image from 'next/image';
 
@@ -135,6 +136,9 @@ export default function Home() {
       <section className="yznanu_yshemtu_section px-3 md:px-14 flex flex-col gap-4 bg-[rgb(247,168,56)] md:text-[64px] py-4 md:py-[80px]">
         <ClientsCarousel />
       </section>
+
+      {/* footer section */}
+      <Footer />
     </main>
   );
 }
