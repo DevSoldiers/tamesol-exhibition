@@ -5,13 +5,12 @@ const Footer = () => {
     return (
         <footer className="bg-gray-900 text-white py-10 px-3 md:px-14">
             <div className="container mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-3 items-between">
+                <div className="flex flex-col md:flex-row justify-between">
                     {/* Left Section - Socials & Contact */}
-                    <div className="flex flex-col">
+                    <div className="flex flex-col items-center md:items-center justify-center">
                         <Image src="/addis_reversed_logo.png" width={200} height={200} alt="addis neger eske fasika" />
-                        <p>123 Main Street, Anytown, CA 12345</p>
+                        <p className="text-center text-sm md:text-left">123 Main Street, Anytown, CA 12345</p>
                     </div>
-
                     {/* Right Section - Links & Second Logo */}
                     <div className="flex flex-col md:flex-row md:justify-between items-center md:items-start mt-8 md:mt-0">
                         <div className="grid grid-cols-2 gap-10 text-center md:text-left">
