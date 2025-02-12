@@ -16,6 +16,8 @@ export default {
         BroadcastChannel: '#f28f37',
         secondarybrand: '#f7a838',
         redishcolor: '#b51f1b',
+        brownishBrand: '#9D4F09',
+        transparentBrownish: '#9d4e09c2',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
@@ -64,6 +66,7 @@ export default {
           'linear-gradient(90deg, rgba(181, 31, 27, 0.25) 0%, rgba(242, 143, 55, 0.25) 100%)',
         'top-header-bg': "url('/hero_exhibition_placeholder.jpeg')",
         'svg-curvy-bg': "url('/curvy_card.svg')",
+        'exhibition-img': "url('/exhibition_pics/15.jpeg')"
       },
       borderRadius: {
         lg: 'var(--radius)',

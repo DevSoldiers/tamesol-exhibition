@@ -1,3 +1,6 @@
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import EmblaCarousel from '@/_components/Hero/hero_carousel';
 import Navbar from '@/_components/Navbar/Navbar';
 import { Button } from '@/components/ui/button';
