@@ -65,7 +65,7 @@ export default function ClientsCarousel() {
             <Slider {...settings} className="w-full">
                 {
                     slides?.map((item, key) => (
-                        <div key={key} className="bg-white">
+                        <div key={key} className="">
                             <Image width={200} height={200} src={`/clients/${item}`} alt="logo image" />
                         </div>
                     ))
@@ -74,7 +74,7 @@ export default function ClientsCarousel() {
             <Slider {...settings3} className="w-full">
                 {
                     slides2?.map((item, key) => (
-                        <div key={key} className="bg-white">
+                        <div key={key} className="">
                             <Image width={200} height={200} src={`/clients/${item}`} alt="logo image" />
                         </div>
                     ))
