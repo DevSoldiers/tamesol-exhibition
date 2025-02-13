@@ -1,0 +1,86 @@
+{
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page"
+  },
+  "Navbar-links": [
+    {
+      "label": "Home",
+      "src": "/"
+    },
+    {
+      "label": "About Us",
+      "src": "/about"
+    },
+    {
+      "label": "Services",
+      "src": "/services"
+    },
+    {
+      "label": "Features",
+      "src": "/features"
+    },
+    {
+      "label": "Contact",
+      "src": "/contact"
+    }
+  ],
+  "aboutpage": {
+    "heroSection": {
+      "title": "Addis Neger",
+      "description": "በመግቢያችን ላይ በጥቂቱ ለመግለፅ እንደሞከርነው ይህ ኤክስፖ በ2017 ዓ.ም ለ ሁለተኛ ጊዜ የምናዘጋጀው ሲሆን በሀገራችን ኤክስፖ ታሪክ በርካታ አዳዲስ ነገሮችን ወደ ዘርፉ ይዘን እየመጣን በመሆኑ እና አዲስ ነገር በሚል ስያሜ በመጀመራን በዚህም ልዩ የአዲስ ነገር በፋሲካ ኤክስፖ አዳዲስ ነገሮች ያካተተትን በመሆኑ የዝግጅቻችን ስያሜ አዲስ ነገር በፋሲካ ኤክስፖ 2017 በሚል ሰይመነዋል::"
+    },
+    "storySection": {
+      "title": "ምን አዲስ ?",
+      "description": "ድርጅታችን በኤክስፖ ዘርፍ ውስጥ በርካታ አዳዲስ እና ዓለም አቀፋዊ ደረጃዎች ለሀገራችን እያስተዋወቅን ሲሆን ከነዚህም መካከል በሳለፍነው ኤክስፖ በ2017 አዲስ ዓመት ኤክስፖ ላይ አዲስ ካስተዋወቅነው ነገሮች መካከል በመንደር (በቪሌጅ) በመከፋፈል ለነጋዴው ሆነ ለሸማቹ ማህበረሰብ ምቹ እና ደህነቱ የተጠበቀ ስፍራን መፍጠር የቻልንበት ሲሆን በዚህም በአዲስ ነገር በፋሲካ ኤክስፖ መንደሮቹን ጨምሮ በርካታ አዳዲስ ነገር በማቀፍ ተግባራዊ የሚደረግ ይሆናል፡፡",
+      "meetTheTeam": "የሚሳተፉበት"
+    },
+    "weStandOut": {
+      "title": "ለምን እኛ የሚለዩ ነን"
+    }
+  },
+  "creativeMinds": {
+    "title": "Creative Minds",
+    "companies": [
+      {
+        "name": "Tamesol Communications",
+        "description": "Some Description",
+        "icon": "/supplier_logos/Tamesol_Communications_Logo.png"
+      },
+      {
+        "name": "Tamcon Software Solutions",
+        "description": "Some Description",
+        "icon": "/supplier_logos/Tamcon_Solutions_Logo.png"
+      },
+      {
+        "name": "LYAN Business Group",
+        "description": "Some Description",
+        "icon": "/supplier_logos/lyan.svg"
+      }
+    ]
+  },
+  "standOut": [
+    {
+      "title": "ትራዲሽናል ማርኬቲንግ ",
+      "description": [
+        "በተመረጡ የቴሌቭዥን ጣቢያዎች",
+        "በተመረጡ የራድዮ ጣቢያዎች",
+        "በተመረጡ የውጭ እስክሪኖች",
+        "በተመረጡ የህትመት ማስታወቂያዎች"
+      ]
+    },
+    {
+      "title": "ተዳራሽነት",
+      "description": [
+        "ይህ ኤክስፖ ከላይ በተመለከትነው መንገድ ለማሰናዳት አስፈላጊውን ቅድመ ዝግጅቶችን ያጠናቀቅን ሲሆን ይህንን ዝግጀት ስኬታማ እና ውጤታማ ከሚያደርጉልን አንዱ እና ዋንኛ መንገዶች የዝጅግጅቱን ተደራሽነት ማስፋት መሆኑን የዝግጅታችን የማርኬቲንግ ክፍል በእጅጉ የሚያምንበት በመሆኑ ተደራሽነታችንን ለማስፋት ከዚህ ቀጥሎ በተዘረዘሩ መንገዶች የምታገኙን መሆኑን ከወዲሁ እናውቃለን፡፡"
+      ]
+    },
+    {
+      "title": "ዲጅታል ማርኬቲንግ",
+      "description": [
+        "በተመረጡ የማህበራዊ ተጽኖ ፈጣሪ ድህረ-ገፆች",
+        "በተመረጡ የማህበራዊ ተጽኖ ፈጣሪ ግለሰቦች"
+      ]
+    }
+  ]
+}

@@ -62,11 +62,13 @@ export default {
         'brand-gradient-var2': 'linear-gradient(to right, #722f37,#f7a838, #f28f37)',
         'brand-gradient-var3': 'linear-gradient(to right, #722f37,#f7a838, #f28f37)',
         'brand-gradient-var4': 'linear-gradient(to right, #b51f1b,#f7a838, #f28e3700,#f28e3700)',
+        'brand-gradient-var5': 'linear-gradient(135deg, #b51f1b,#f7a838, #f28f37)',
         'glass-morph-bg':
           'linear-gradient(90deg, rgba(181, 31, 27, 0.25) 0%, rgba(242, 143, 55, 0.25) 100%)',
         'top-header-bg': "url('/hero_exhibition_placeholder.jpeg')",
         'svg-curvy-bg': "url('/curvy_card.svg')",
-        'exhibition-img': "url('/exhibition_pics/15.jpeg')"
+        'exhibition-img': "url('/exhibition_pics/15.jpeg')",
+        'exhibition-img2': "url('/exhibition_pics/113.jpeg')"
       },
       borderRadius: {
         lg: 'var(--radius)',
