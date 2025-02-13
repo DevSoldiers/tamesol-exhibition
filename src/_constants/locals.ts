@@ -7,6 +7,6 @@ const locales = [
   },
 ];
 
-const defaultLocale = 'en';
+const defaultLocale = 'amh';
 
 export { locales, defaultLocale };

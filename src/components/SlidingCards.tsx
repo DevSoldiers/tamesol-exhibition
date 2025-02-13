@@ -70,18 +70,18 @@ const YznanuCards: React.FC = () => {
     };
 
     return (
-        <article className="flex flex-col md:flex-row gap-3 bg-blue-500 h-[450px] grow p-4 overflow-hidden">
+        <article className="flex flex-col md:flex-row gap-3 h-[450px] grow p-4 overflow-hidden">
             {[0, 1, 2, 3, 4].map((index) => (
                 <div
                     key={index}
                     ref={(el) => {
                         if (el) cardsRef.current[index] = el;
                     }}
-                    className="w-full md:w-auto h-1/5 md:h-full text-2xl bg-blue-200 grow basis-0 rounded-lg flex items-center justify-center transition-[flex-grow] duration-300"
+                    className="w-full md:w-auto h-1/5 md:h-full text-2xl bg-blue-200 grow basis-0 rounded-lg flex items-center justify-center transition-[flex-grow] duration-300 bg-exhibition-img2 bg-cover"
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
                 >
-                    Card {index + 1}
+
                 </div>
             ))}
         </article>
