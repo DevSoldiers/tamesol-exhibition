@@ -42,11 +42,11 @@ export default function HowToParticipate() {
       {isModalOpen && (
         <div
           className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4"
-          onClick={closeModal} // Click outside to close
+          onClick={closeModal}
         >
           <div
             className="bg-white rounded-lg shadow-lg p-8 max-w-2xl w-full mx-4 relative flex flex-col max-h-[80vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
