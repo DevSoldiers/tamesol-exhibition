@@ -15,6 +15,7 @@ export default {
         foreground: 'hsl(var(--foreground))',
         BroadcastChannel: '#f28f37',
         secondarybrand: '#f7a838',
+        transparentSecondaryBrand: '#f7a8389c',
         redishcolor: '#b51f1b',
         brownishBrand: '#9D4F09',
         transparentBrownish: '#9d4e09c2',

@@ -3,10 +3,10 @@
 import { Button } from '@/components/ui/button';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Link } from '@/i18n/routing';
 
 gsap.registerPlugin(ScrollTrigger);
 

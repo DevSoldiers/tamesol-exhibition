@@ -77,11 +77,11 @@ const YznanuCards: React.FC = () => {
                     ref={(el) => {
                         if (el) cardsRef.current[index] = el;
                     }}
-                    className="w-full md:w-auto h-1/5 md:h-full text-2xl bg-blue-200 grow basis-0 rounded-lg flex items-center justify-center transition-[flex-grow] duration-300 bg-exhibition-img2 bg-cover"
+                    className="w-full md:w-auto h-1/5 md:h-full text-2xl bg-blue-200 grow basis-0 rounded-lg flex items-center justify-center transition-[flex-grow] duration-300 bg-cover"
+                    style={{ backgroundImage: `url('/exhibition_pics/advert_${index + 1}.jpeg')` }}
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
                 >
-
                 </div>
             ))}
         </article>

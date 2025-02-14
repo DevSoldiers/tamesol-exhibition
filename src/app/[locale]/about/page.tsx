@@ -11,7 +11,7 @@ export default function About() {
     const creativeMinds: TCreativeMinds = content.raw('creativeMinds');
 
     return (
-        <main className="min-h-screen absolute top-0">
+        <main className="min-h-screen mt-[-95px]">
             {/* Hero Section */}
             <section className="relative w-full bg-[#fcdfb6] py-16 md:py-24 px-3 md:px-14">
                 {/* Background pattern */}
@@ -119,7 +119,7 @@ export default function About() {
                                 {/* Image Container with Gradient Overlay */}
                                 <div className="relative aspect-video w-full bg-[#fef4e7]">
                                     <Image
-                                        src="/supplier_logos/Tamcon_Solutions_Logo.png"
+                                        src={content.icon || "/supplier_logos/Tamcon_Solutions_Logo.png"}
                                         alt="Team Member"
                                         fill
                                         className="object-contain p-4 transition-opacity duration-300"

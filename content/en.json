@@ -11,18 +11,6 @@
     {
       "label": "About Us",
       "src": "/about"
-    },
-    {
-      "label": "Services",
-      "src": "/services"
-    },
-    {
-      "label": "Features",
-      "src": "/features"
-    },
-    {
-      "label": "Contact",
-      "src": "/contact"
     }
   ]
 }

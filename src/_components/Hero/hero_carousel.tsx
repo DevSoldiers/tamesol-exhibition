@@ -24,8 +24,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 
   return (
     <section className="bg-exhibition-img bg-cover bg-fixed absolute inset-0 h-[90dvh] overflow">
+      <div className="absolute inset-0 overflow-hidden">
+        <video width="100%" height="50%" autoPlay loop playsInline muted>
+          {/* <source src="/expo.mp4" type="video/mp4" /> */}
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div className="absolute inset-0 bg-transparentBrownish"></div>
-      <div className="hidden lg:block h-[90dvh] bg-secondarybrand absolute right-0 bottom-0 top-0 z-10 max-w-[720px] w-full rounded-tl-[70%] rounded-bl-[150px]">
+      <div className="hidden lg:block h-[90dvh] bg-transparentSecondaryBrand absolute right-0 bottom-0 top-0 z-10 max-w-[720px] w-full rounded-tl-[70%] rounded-bl-[25%]">
       </div>
       <Slider {...settings} className="h-full relative z-[35]">
         {slides.map((index) => (
