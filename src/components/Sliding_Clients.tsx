@@ -59,13 +59,22 @@ export default function ClientsCarousel() {
     infinite: true,
     speed: 500,
     slidesToShow: 7,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     arrows: false,
     autoplay: true,
     centerMode: true,
     pauseOnFocus: true,
     cssEase: 'linear',
     swipeToSlide: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
   const settings3 = {
     dots: false,
@@ -79,6 +88,15 @@ export default function ClientsCarousel() {
     pauseOnFocus: true,
     swipeToSlide: true,
     rtl: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
   return (
     <>
