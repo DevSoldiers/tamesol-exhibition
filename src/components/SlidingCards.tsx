@@ -1,99 +1,116 @@
 'use client';
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import Slider from 'react-slick';
+import Image from 'next/image';
 
 const YznanuCards: React.FC = () => {
+  // Use a ref to store an array of HTMLDivElement references.
   const cardsRef = useRef<HTMLDivElement[]>([]);
-  const [isMobile, setIsMobile] = useState(false);
+
   const tl = useRef<gsap.core.Timeline | null>(null);
-
-  // Check if the screen is mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768); // 768px is the breakpoint for md in TailwindCSS
-    };
-
-    checkMobile(); // Initial check
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   useEffect(() => {
     if (!cardsRef.current.length) return;
 
-    // Clear existing timeline
-    if (tl.current) tl.current.kill();
+    gsap.set(cardsRef.current[0], { flexGrow: 2 });
+    gsap.set(cardsRef.current.slice(1), { flexGrow: 1 });
 
-    if (!isMobile) {
-      // Large screen animation (same as before)
-      gsap.set(cardsRef.current[0], { flexGrow: 2 });
-      gsap.set(cardsRef.current.slice(1), { flexGrow: 1 });
+    tl.current = gsap.timeline({ repeat: -1, paused: true });
 
-      tl.current = gsap.timeline({ repeat: -1, paused: true });
-      cardsRef.current.forEach((_, index) => {
-        tl.current?.to(cardsRef.current, {
-          flexGrow: 1,
+    cardsRef.current.forEach((_, index) => {
+      tl.current?.to(cardsRef.current, {
+        flexGrow: 1,
+        duration: 0.5,
+        ease: 'power2.inOut',
+      });
+
+      tl.current?.to(
+        cardsRef.current[index],
+        {
+          flexGrow: 2,
           duration: 0.5,
           ease: 'power2.inOut',
-        });
+        },
+        '<'
+      );
 
-        tl.current?.to(
-          cardsRef.current[index],
-          {
-            flexGrow: 2,
-            duration: 0.5,
-            ease: 'power2.inOut',
-          },
-          '<'
-        );
+      tl.current?.to({}, { duration: 2 });
+    });
 
-        tl.current?.to({}, { duration: 2 });
-      });
+    tl.current.play();
 
-      tl.current.play();
-    } else {
-      // Mobile stacking effect
-      gsap.set(cardsRef.current, {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        zIndex: 0,
-      });
+    return () => {
+      tl.current?.kill();
+    };
+  }, []);
 
-      let lastScrollY = window.scrollY;
-      const handleScroll = () => {
-        const scrollY = window.scrollY;
-        const direction = scrollY > lastScrollY ? 1 : -1; // 1 for down, -1 for up
-        lastScrollY = scrollY;
+  // Handler for mouse enter events.
+  const handleMouseEnter = (index: number) => {
+    tl.current?.pause();
 
-        cardsRef.current.forEach((card, index) => {
-          gsap.to(card, {
-            zIndex: direction > 0 ? index + 1 : Math.max(0, index - 1),
-            duration: 0.5,
-            ease: 'power2.inOut',
-          });
-        });
-      };
+    gsap.to(cardsRef.current, {
+      flexGrow: 1,
+      duration: 0.3,
+      ease: 'power2.inOut',
+    });
 
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
-    }
-  }, [isMobile]);
+    gsap.to(cardsRef.current[index], {
+      flexGrow: 2,
+      duration: 0.3,
+      ease: 'power2.inOut',
+    });
+  };
+
+  // Handler for mouse leave events.
+  const handleMouseLeave = () => {
+    tl.current?.restart().play();
+  };
+
+  const settings = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+  };
 
   return (
-    <article className="relative md:flex md:flex-row gap-3 h-[450px] grow p-4 overflow-hidden">
-      {[0, 1, 2, 3, 4].map((index) => (
-        <div
-          key={index}
-          ref={(el) => {
-            if (el) cardsRef.current[index] = el;
-          }}
-          className="w-full md:w-auto h-full md:h-full text-2xl bg-blue-200 grow basis-0 rounded-lg flex items-center justify-center transition-all duration-300 bg-cover bg-center"
-          style={{ backgroundImage: `url('/exhibition_pics/advert_${index + 1}.jpeg')` }}
-        ></div>
-      ))}
-    </article>
+    <>
+      <article className="hidden md:flex flex-col md:flex-row gap-3 h-[450px] grow p-4 overflow-hidden">
+        {[0, 1, 2, 3, 4].map((index) => (
+          <div
+            key={index}
+            ref={(el) => {
+              if (el) cardsRef.current[index] = el;
+            }}
+            className="w-full md:w-auto h-[1/5] md:h-full text-2xl bg-blue-200 grow basis-0 rounded-lg flex items-center justify-center transition-[flex-grow] duration-300 bg-cover"
+            style={{ backgroundImage: `url('/exhibition_pics/advert_${index + 1}.jpeg')` }}
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={handleMouseLeave}
+          ></div>
+        ))}
+      </article>
+      {/** Hide on large screens */}
+      <div className="block md:hidden">
+        <Slider {...settings} className="h-full relative z-[35] w-full">
+          {[0, 1, 2, 3, 4].map((index) => (
+            <div key={index} className="flex justify-center items-center p-2">
+              <Image
+                src={`/exhibition_pics/advert_${index + 1}.jpeg`}
+                width={2000}
+                height={200}
+                className="w-full h-[400px] rounded-lg shadow-lg"
+                alt="exhibition advert pic"
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
+
+    </>
   );
 };
 

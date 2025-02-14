@@ -13,7 +13,7 @@ const EmblaCarousel = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
   };
 
   const t = useTranslations();
@@ -24,12 +24,12 @@ const EmblaCarousel = () => {
       <div className="absolute inset-0 overflow-hidden">
         <video
           width="100%"
-          height="50%"
+          height="100%"
           autoPlay
           loop
           playsInline
           muted
-          className="max-md:position-absolute max-md:top-[150px]"
+          className="max-md:absolute max-md:top-[150px] object-cover"
         >
           <source src="/expo.mp4" type="video/mp4" />
           Your browser does not support the video tag.

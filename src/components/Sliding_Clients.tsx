@@ -59,7 +59,7 @@ export default function ClientsCarousel() {
     infinite: true,
     speed: 500,
     slidesToShow: 7,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     arrows: false,
     autoplay: true,
     centerMode: true,
@@ -71,7 +71,7 @@ export default function ClientsCarousel() {
         breakpoint: 768,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
     ],

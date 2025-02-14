@@ -68,7 +68,7 @@ export default {
           'linear-gradient(90deg, rgba(181, 31, 27, 0.25) 0%, rgba(242, 143, 55, 0.25) 100%)',
         'top-header-bg': "url('/hero_exhibition_placeholder.jpeg')",
         'svg-curvy-bg': "url('/curvy_card.svg')",
-        'exhibition-img': "url('/exhibition_pics/15.jpeg')",
+        'exhibition-img': "url('/exhibition_pics/advert_3.jpeg')",
         'exhibition-img2': "url('/exhibition_pics/advert_2.jpeg')",
       },
       borderRadius: {

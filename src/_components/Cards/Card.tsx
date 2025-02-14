@@ -13,8 +13,7 @@ const Card: React.FC<CardProps> = ({
   onButtonClick,
 }) => {
   return (
-    <article className="max-w-sm rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gradient-to-b from-orange-50 to-orange-100 md:max-w-full md:w-[95%] transform hover:-translate-y-1 transition-transform">
-      {/* Image Section */}
+    <article className="max-w-sm w-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl duration-300 bg-gradient-to-b from-orange-50 to-orange-100 md:max-w-full md:w-[95%] transform hover:-translate-y-1 transition-transform flex flex-col">
       <div className="relative h-40 md:h-48">
         <Image
           width={400}
@@ -25,8 +24,7 @@ const Card: React.FC<CardProps> = ({
         />
       </div>
 
-      {/* Content Section */}
-      <div className="px-4 py-3">
+      <div className="px-4 py-3 flex-grow flex flex-col">
         <div className="flex justify-between">
           <h3 className="font-bold text-xl md:text-2xl mb-2 text-orange-800 font-[EthiopianJiret]">
             {title}
@@ -43,16 +41,15 @@ const Card: React.FC<CardProps> = ({
             {description?.map((content, key) => <li key={key}>{content}</li>)}
           </ul>
         </div>
-      </div>
 
-      {/* Button Section */}
-      <div className="px-4 pb-3">
-        <button
-          className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 md:py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105 shadow-md hover:shadow-orange-200 flex items-center justify-center gap-2"
-          onClick={onButtonClick}
-        >
-          <span>{buttonText}</span>
-        </button>
+        <div className="mt-auto px-4 pb-3">
+          <button
+            className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 md:py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105 shadow-md hover:shadow-orange-200 flex items-center justify-center gap-2"
+            onClick={onButtonClick}
+          >
+            <span>{buttonText}</span>
+          </button>
+        </div>
       </div>
     </article>
   );
