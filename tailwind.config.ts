@@ -69,7 +69,7 @@ export default {
         'top-header-bg': "url('/hero_exhibition_placeholder.jpeg')",
         'svg-curvy-bg': "url('/curvy_card.svg')",
         'exhibition-img': "url('/exhibition_pics/15.jpeg')",
-        'exhibition-img2': "url('/exhibition_pics/113.jpeg')"
+        'exhibition-img2': "url('/exhibition_pics/advert_2.jpeg')",
       },
       borderRadius: {
         lg: 'var(--radius)',

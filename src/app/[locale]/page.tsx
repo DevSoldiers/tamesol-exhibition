@@ -1,13 +1,13 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 import EmblaCarousel from '@/_components/Hero/hero_carousel';
 import ClientsCarousel from '@/components/Sliding_Clients';
-import MegbyaTickets from "@/components/ui/MegbyaTickets";
-import YznanuYshemtu from "@/components/ui/YznanuYshemtu";
-import AddisNegerAdvert from "@/components/ui/AddisNegerAdvert";
-import Suppliers from "@/components/ui/Supplier_Companies";
-import HowToParticipate from "@/components/ui/HowToParticipate";
+import MegbyaTickets from '@/components/ui/MegbyaTickets';
+import YznanuYshemtu from '@/components/ui/YznanuYshemtu';
+import AddisNegerAdvert from '@/components/ui/AddisNegerAdvert';
+import Suppliers from '@/components/ui/Supplier_Companies';
+import HowToParticipate from '@/components/ui/HowToParticipate';
 
 export default function Home() {
   return (
