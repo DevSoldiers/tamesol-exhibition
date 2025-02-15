@@ -5,21 +5,55 @@
       "subTitle": "ይህ አዲስ ነገር በፋሲካ ኤክስፖ በልዩነት እና በኤክስፖ ታሪክ ለመጀመሪያ ጊዜ የሚከናወኑ ዋና ዋና እና አዳዲስ ክንዋኔዎች መካከል አንዱ እና ዋንኟው የፆም ፌስቲቫል ነው።",
       "signUp": "ይመዝገቡ",
       "logIn": "ይግቡ",
-      "imgSrc": "/adaddis_negeroch/gebeta_pic.svg"
+      "imgSrc": "gebeta_pic"
     },
     {
       "title": "ኤግዚብሽን",
       "subTitle": "የኤክስፖው መክፈቻ ዝግጅት በከፍተኛ ደረጃ የሚካሄድ ሲሆን የመንግስት እና የግል ድርጅቶች ኃላፊዎች፣ ታዋቂ ግለሰቦች፣ የሚዲያ ድርጅቶች እና ሌሎች እንግዶች ይሳተፋሉ።",
       "signUp": "ይመዝገቡ",
       "logIn": "ይግቡ",
-      "imgSrc": "/headphone_girl.png"
+      "imgSrc": "/headphone_girl"
     },
     {
       "title": "ልጆጲያ (ኪድዞጵያ)",
       "subTitle": "Kidzopia ለልጆች የተዘጋጀ ደስተኛ ቦታ ሲሆን ፣ ደህንነታቸውን የሚጠብቅ እና ሙሉ በሙሉ የሚደስት የጨዋታ ቦታ አለን!",
       "signUp": "ይመዝገቡ",
       "logIn": "ይግቡ",
-      "imgSrc": "/hero_section/kidztopia.png"
+      "imgSrc": "kidztopia"
+    }
+  ],
+  "megbyaTickets": [
+    {
+      "title": "የፆም ፌስት",
+      "imageSrc": "gebeta_pic",
+      "imageAlt": "የፆም ፌስት",
+      "buttonText": "ትኬትዎን ይቁረጡ",
+      "description": [
+        "የፆም ፌስት የፋሲካ ኤክስፖ ልዩ እና አዲስ ክንዋኔ",
+        "በኤክስፖ ታሪክ ለመጀመሪያ ጊዜ ሚከናወን",
+        "የፆም ወቅትን በማስገባት ልዩ ዝግጅት"
+      ],
+      "descriptionTitle": "የመግቢያ ትኬት + ምግብ + መጠጥ= የፆም ፌስት"
+    },
+    {
+      "title": "ልጆጲያ (ኪድዞጵያ)",
+      "imageSrc": "kidztopia",
+      "imageAlt": "የፆም ፌስት",
+      "buttonText": "ትኬትዎን ይቁረጡ",
+      "description": [
+        "የፆም ፌስት የፋሲካ ኤክስፖ ልዩ እና አዲስ ክንዋኔ",
+        "በኤክስፖ ታሪክ ለመጀመሪያ ጊዜ ሚከናወን",
+        "የፆም ወቅትን በማስገባት ልዩ ዝግጅት"
+      ],
+      "descriptionTitle": ""
+    },
+    {
+      "title": "የፆም ፌስት",
+      "imageSrc": "gebeta_pic",
+      "imageAlt": "የፆም ፌስት",
+      "buttonText": "ትኬትዎን ይቁረጡ",
+      "description": ["Kidzopia Content"],
+      "descriptionTitle": "የመክፈቻ ስነ-ስርዓት"
     }
   ],
   "HomePage": {
@@ -92,10 +126,7 @@
     },
     {
       "title": "ዲጅታል ማርኬቲንግ",
-      "description": [
-        "በተመረጡ የማህበራዊ ተጽኖ ፈጣሪ ድህረ-ገፆች",
-        "በተመረጡ የማህበራዊ ተጽኖ ፈጣሪ ግለሰቦች"
-      ]
+      "description": ["በተመረጡ የማህበራዊ ተጽኖ ፈጣሪ ድህረ-ገፆች", "በተመረጡ የማህበራዊ ተጽኖ ፈጣሪ ግለሰቦች"]
     }
   ],
   "eyeteznanuYshemtu": "እየተዝናኑ ይሸምቱ!",

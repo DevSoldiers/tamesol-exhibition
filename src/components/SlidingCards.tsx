@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import Slider from 'react-slick';
-import Image from 'next/image';
+import CImageCard from '@/_components/Cards/CImageCard';
 
 const YznanuCards: React.FC = () => {
   // Use a ref to store an array of HTMLDivElement references.
@@ -77,6 +77,8 @@ const YznanuCards: React.FC = () => {
     autoplay: true,
   };
 
+  const url = 'https://res.cloudinary.com/dzsa1ehta/image/upload';
+
   return (
     <>
       <article className="hidden md:flex flex-col md:flex-row gap-3 h-[450px] grow p-4 overflow-hidden">
@@ -87,7 +89,7 @@ const YznanuCards: React.FC = () => {
               if (el) cardsRef.current[index] = el;
             }}
             className="w-full md:w-auto h-[1/5] md:h-full text-2xl bg-blue-200 grow basis-0 rounded-lg flex items-center justify-center transition-[flex-grow] duration-300 bg-cover"
-            style={{ backgroundImage: `url('/exhibition_pics/advert_${index + 1}.jpeg')` }}
+            style={{ backgroundImage: `url(${url}/advert_${index + 1}.png)` }}
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
           ></div>
@@ -98,18 +100,17 @@ const YznanuCards: React.FC = () => {
         <Slider {...settings} className="h-full relative z-[35] w-full">
           {[0, 1, 2, 3, 4].map((index) => (
             <div key={index} className="flex justify-center items-center p-2">
-              <Image
-                src={`/exhibition_pics/advert_${index + 1}.jpeg`}
+              <CImageCard
                 width={2000}
                 height={200}
+                imgSrc={`advert_${index + 1}`}
+                alt="Addis Neger Exhibition Ad Pics"
                 className="w-full h-[400px] rounded-lg shadow-lg"
-                alt="exhibition advert pic"
               />
             </div>
           ))}
         </Slider>
       </div>
-
     </>
   );
 };
