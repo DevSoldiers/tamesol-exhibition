@@ -1,3 +1,4 @@
+import CImageCard from '@/_components/Cards/CImageCard';
 import { TCreativeMinds, TStandOut } from '@/_types/content.interface';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -28,12 +29,12 @@ export default function About() {
           </div>
           {/* Right Image */}
           <div className="relative w-full md:w-1/2">
-            <Image
+            <CImageCard
               width={300}
               height={300}
-              src="/headphone_girl.png"
-              alt="Creative digital work"
+              imgSrc={'/headphone_girl'}
               className="h-auto w-full rounded-lg object-cover shadow-lg"
+              alt="About Addisneger"
             />
           </div>
         </div>
@@ -57,11 +58,11 @@ export default function About() {
 
             {/* Right Image */}
             <div className="relative h-96 w-full overflow-hidden rounded-2xl shadow-xl">
-              <Image
-                src="/headphone_girl.png"
-                alt="Creative digital work"
-                fill
+              <CImageCard
                 className="object-cover rounded-2xl"
+                alt="About addis neger"
+                imgSrc="/headphone_girl"
+                fill
                 priority
               />
             </div>
