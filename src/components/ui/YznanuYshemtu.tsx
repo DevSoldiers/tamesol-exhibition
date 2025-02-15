@@ -10,7 +10,10 @@ export default function YznanuYshemtu() {
       <div className="ygobgnu_wrapper flex flex-col md:flex-row gap-5 justify-between">
         <article className="w-full max-h-[400px] h bg-exhibition-img rounded-md">
           <video width="100%" height="150%" autoPlay loop playsInline muted>
-            {/* <source src="/expo.mp4" type="video/mp4" /> */}
+            <source
+              src="https://res.cloudinary.com/dzsa1ehta/video/upload/expo_lqouoh.mp4"
+              type="video/mp4"
+            />
             Your browser does not support the video tag.
           </video>
         </article>

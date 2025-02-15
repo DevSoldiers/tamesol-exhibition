@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import CImageCard from '../Cards/CImageCard';
 
 export default function CarouselCard({
   title,
@@ -37,13 +37,7 @@ export default function CarouselCard({
           </section>
           {/* right section */}
           <section className="right_side relative self-end hidden md:block">
-            <Image
-              src={imgSrc || '/headphone_girl.png'}
-              width={900}
-              height={200}
-              alt="advert"
-              className="scale-110"
-            />
+            <CImageCard imgSrc={imgSrc} alt="advert pic" />
           </section>
         </div>
       </div>
