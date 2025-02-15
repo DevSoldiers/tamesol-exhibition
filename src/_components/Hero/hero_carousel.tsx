@@ -23,6 +23,7 @@ const EmblaCarousel = () => {
     <section className="px-3 md:px-14 bg-cover bg-fixed absolute inset-0 h-[90dvh] overflow">
       <div className="absolute inset-0 overflow-hidden w-full h-full">
         <div className="relative w-full h-full">
+          <h1>Hello</h1>
           <video
             autoPlay
             muted
