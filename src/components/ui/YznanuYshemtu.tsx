@@ -10,7 +10,7 @@ export default function YznanuYshemtu() {
         {t('eyeteznanuYshemtu')}
       </p>
       <div className="ygobgnu_wrapper flex flex-col md:flex-row gap-5 justify-between">
-        <article className="w-full max-h-[400px] h bg-exhibition-img rounded-md">
+        <article className="w-full max-h-[400px] h rounded-md">
           <video width="100%" height="150%" autoPlay loop playsInline muted>
             <source
               src="https://res.cloudinary.com/dzsa1ehta/video/upload/expo_lqouoh.mp4"
@@ -20,7 +20,7 @@ export default function YznanuYshemtu() {
           </video>
         </article>
         <article
-          className="w-full h-[400px] rounded-md bg-exhibition-img bg-cover"
+          className="w-full h-[400px] rounded-md bg-cover"
           style={{ backgroundImage: `url(${url}/advert_1)` }}
         ></article>
       </div>
