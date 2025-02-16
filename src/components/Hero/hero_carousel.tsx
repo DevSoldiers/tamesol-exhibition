@@ -31,7 +31,7 @@ const EmblaCarousel = () => {
             className="absolute top-1/2 left-1/2 w-[100.5%] h-[100.5%] object-cover -translate-x-1/2 -translate-y-1/2"
           >
             <source
-              src="https://res.cloudinary.com/dzsa1ehta/video/upload/expo_lqouoh.mp4"
+              src="https://res.cloudinary.com/dzsa1ehta/video/upload/expo_lqouoh_dhab0l.mp4"
               type="video/mp4"
             />
             Your browser does not support the video tag.

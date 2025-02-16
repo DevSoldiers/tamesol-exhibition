@@ -11,7 +11,7 @@ export default function HowToParticipate() {
 
   return (
     <>
-      <article className="flex items-center justify-center py-10 bg-gradient-to-r from-purple-50 to-indigo-50 px-4 md:px-0">
+      <article className="flex items-center justify-center py-10 bg-gradient-to-r px-4 md:px-0">
         <div className="relative bg-white shadow-2xl rounded-2xl border-2 border-purple-300 max-w-4xl w-full p-8 md:p-12 transform transition-transform">
           {/* Decorative Elements */}
           <div className="absolute top-0 right-0 w-20 h-20 bg-orange-200 rounded-bl-full opacity-50"></div>

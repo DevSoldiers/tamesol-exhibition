@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import Slider from 'react-slick';
-import CImageCard from '@/_components/Cards/CImageCard';
+import CImageCard from '@/components/Cards/CImageCard';
 
 const YznanuCards: React.FC = () => {
   // Use a ref to store an array of HTMLDivElement references.

@@ -1,4 +1,4 @@
-import CImageCard from '@/_components/Cards/CImageCard';
+import CImageCard from '@/components/Cards/CImageCard';
 import { TCreativeMinds, TStandOut } from '@/_types/content.interface';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
