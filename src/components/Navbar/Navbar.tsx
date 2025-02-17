@@ -82,8 +82,7 @@ export default function Navbar() {
             <Link href="/">
               <Image
                 src="/eske_fasika_logo.png"
-                width={150}
-                height={120}
+                fill
                 alt="Eske Fasika Logo"
                 className="absolute top-0 max-md:w-32"
               />
