@@ -1,4 +1,4 @@
-import Container from '@/components/Container';
+import Container from '@/_components/Container';
 import { CardProps } from '@/_types/card.interface';
 import { useTranslations } from 'next-intl';
 import Card from '../Cards/Card';

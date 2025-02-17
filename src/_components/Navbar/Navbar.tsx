@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/_components/ui/button';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
@@ -78,16 +78,16 @@ export default function Navbar() {
           ref={navRef}
           className="main_nav_article_top bg-glass-morph-bg text-white px-4 md:px-10 py-5 max-md:py-1 rounded-full max-md:rounded-md shadow-lg mx-auto flex items-center justify-between relative max-h-[70px] transition-colors duration-200"
         >
-          <div className="relative w-[150px] h-[80px] flex items-center justify-center hover:cursor-pointer transition-transform duration-300 hover:scale-110">
-            <Link href="/">
-              <Image
-                src="/eske_fasika_logo.png"
-                fill
-                alt="Eske Fasika Logo"
-                className="absolute top-0 max-md:w-32"
-              />
-            </Link>
-          </div>
+          <Link href="/" className="relative w-[150px] h-[80px] flex items-center justify-center hover:cursor-pointer transition-transform duration-300 hover:scale-110">
+            <Image
+              src="/eske_fasika_logo.png"
+              sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw,100vw"
+              fill
+              alt="Eske Fasika Logo"
+              className="absolute top-0 max-md:w-32"
+              priority
+            />
+          </Link>
           <div className="hidden lg:flex space-x-6 text-gray-300 items-center">
             {navLinks.map((link: { src: string; label: string }) => (
               <Link href={link.src} className="navbar-links" key={link.label}>
