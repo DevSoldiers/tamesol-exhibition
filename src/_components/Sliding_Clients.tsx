@@ -93,7 +93,7 @@ export default function ClientsCarousel() {
         breakpoint: 768,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
     ],
