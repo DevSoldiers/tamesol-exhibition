@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/_components/ui/button';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
