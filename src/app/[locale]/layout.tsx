@@ -7,6 +7,11 @@ import { getMessages } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 import Navbar from '@/_components/Navbar/Navbar';
 import Footer from '@/_components/Footer';
+import RegisterPage from '@/_components/Form/UserForm';
+import OtpVerificationPage from '@/_components/Form/ConfirmOtp';
+import RegisterUserForm from '@/_components/Form/RegisterUser.form';
+import MainRegisterForm from '@/_components/Form/Register.form';
+import AuthProvider from '@/lib/context/authProvider.context';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -48,12 +53,17 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} antialiased`}
       >
-        <NextIntlClientProvider messages={content}>
-          <Navbar />
-          {children}
-          {/* footer section */}
-          <Footer />
-        </NextIntlClientProvider>
+        <AuthProvider>
+          <NextIntlClientProvider messages={content}>
+            <Navbar />
+            {/* {children} */}
+            {/* <RegisterPage /> */}
+            {/* <OtpVerificationPage /> */}
+            <MainRegisterForm />
+            {/* footer section */}
+            <Footer />
+          </NextIntlClientProvider>
+        </AuthProvider>
       </body>
     </html>
   );

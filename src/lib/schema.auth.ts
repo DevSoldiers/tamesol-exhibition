@@ -1,15 +1,17 @@
 import * as Yup from 'yup';
 
-export const phoneFormSchema = Yup.object({
+export const registerUserSchema = Yup.object({
     phoneNumber: Yup.string()
-        .required('Phone number is required.')
-        .matches(/^\d{10}$/, 'Phone number must be 10 digits.'),
+        .required('Phone number is required')
+        .matches(/^[0-9]+$/, 'Must be a valid phone number')
+        .min(10, 'Must be at least 10 digits')
+        .max(15, 'Must be 15 digits or less'),
     password: Yup.string()
-        .required('Password is required.')
-        .length(4, 'Password must be 4 characters long.'),
+        .required('Password is required')
+        .min(8, 'Password must be at least 8 characters'),
     confirmPassword: Yup.string()
-        .required('Confirm Password is required.')
-        .oneOf([Yup.ref('password')], 'Passwords must match.'),
+        .required('Confirm Password is required')
+        .oneOf([Yup.ref('password'), ""], 'Passwords must match'),
 });
 
 export const otpFormSchema = Yup.object().shape({
@@ -25,4 +27,12 @@ export const otpFormSchema = Yup.object().shape({
     otp3: Yup.string()
         .required('Required')
         .matches(/^\d$/, 'Must be a number'),
+});
+
+export const snedOtpSchema = Yup.object({
+    phoneNumber: Yup.string()
+        .required('Phone number is required')
+        .matches(/^[0-9]+$/, 'Must be a valid phone number')
+        .min(10, 'Must be at least 10 digits')
+        .max(15, 'Must be 15 digits or less'),
 });

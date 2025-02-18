@@ -13,6 +13,7 @@ const Footer = () => {
               width={200}
               height={200}
               alt="addis neger eske fasika"
+              style={{ width: "auto", height: "auto" }}
             />
             <p className="text-center text-sm md:text-left">123 Main Street, Anytown, CA 12345</p>
           </div>
