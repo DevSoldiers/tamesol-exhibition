@@ -9,12 +9,8 @@ import AddisNegerAdvert from '@/_components/ui/AddisNegerAdvert';
 import Suppliers from '@/_components/ui/Supplier_Companies';
 import HowToParticipate from '@/_components/ui/HowToParticipate';
 import Container from '@/_components/Container';
-import { useSession } from 'next-auth/react';
-import { getServerSession } from 'next-auth';
-import { options } from '@/api/auth/[...nextauth]/options';
 
 export default async function Home() {
-
   return (
     <main className="">
       <section className="h-[90dvh]">

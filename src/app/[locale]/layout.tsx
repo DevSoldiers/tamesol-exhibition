@@ -5,12 +5,11 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { getMessages } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
-import Navbar from '@/_components/Navbar/Navbar';
 import Footer from '@/_components/Footer';
-import RegisterPage from '@/_components/Form/UserForm';
-import OtpVerificationPage from '@/_components/Form/ConfirmOtp';
-import RegisterUserForm from '@/_components/Form/RegisterUser.form';
-import MainRegisterForm from '@/_components/Form/Register.form';
+import { getServerSession } from 'next-auth';
+import { options } from '../api/auth/[...nextauth]/options';
+import Navbar from '@/_components/Navbar/Navbar';
+import { ModalContextProvider } from '@/lib/context/modal.context';
 import AuthProvider from '@/lib/context/authProvider.context';
 
 const geistSans = Geist({
@@ -47,7 +46,8 @@ export default async function RootLayout({
   }
 
   const content = await getMessages();
-
+  const session = await getServerSession(options);
+  console.log('server session===>', session);
   return (
     <html lang="en">
       <body
@@ -55,11 +55,10 @@ export default async function RootLayout({
       >
         <AuthProvider>
           <NextIntlClientProvider messages={content}>
-            <Navbar />
-            {/* {children} */}
-            {/* <RegisterPage /> */}
-            {/* <OtpVerificationPage /> */}
-            <MainRegisterForm />
+            <ModalContextProvider>
+              <Navbar />
+            </ModalContextProvider>
+            {children}
             {/* footer section */}
             <Footer />
           </NextIntlClientProvider>

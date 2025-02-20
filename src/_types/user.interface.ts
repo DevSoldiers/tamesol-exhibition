@@ -1,5 +1,5 @@
 export interface IUser {
-    phoneNumber: string;
-    token: string;
-    image: string;
+  phoneNumber: string;
+  token: string;
+  image: string;
 }

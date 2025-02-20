@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { AppProvider } from "@/lib/context/userform.context";
-import RegisterUserForm from "./RegisterUser.form";
+import { AppProvider } from '@/lib/context/userform.context';
+import RegisterUserForm from './RegisterUser.form';
 
-const MainRegisterForm = () => {
-    return (
-        <AppProvider>
-            <RegisterUserForm />
-        </AppProvider>
-    );
+const MainRegisterForm = ({ isModal }: { isModal: boolean }) => {
+  return (
+    <AppProvider>
+      <RegisterUserForm isModal={isModal} />
+    </AppProvider>
+  );
 };
 
 export default MainRegisterForm;

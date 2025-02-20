@@ -3,18 +3,31 @@
 import { Button } from '@/_components/ui/button';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from '@/i18n/routing';
+import Modal from '@/_ui/Modal/Modal';
+import SignInForm from '../Form/SignIn.form';
+import RegisterUserForm from '../Form/RegisterUser.form';
+import { ModalContext } from '@/lib/context/modal.context';
+import { useSession } from 'next-auth/react';
+import Logout from '../ui/Logout';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const session = useSession();
+  const isLoggedIn = Boolean(session && session.data);
+
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
   const sidebarRef = useRef<HTMLElement | null>(null);
   const navRef = useRef<HTMLElement | null>(null);
+
+  // modal context
+  const { modalState } = useContext(ModalContext);
+  const { authType, setAuthType } = modalState ?? {};
 
   const t = useTranslations();
   const navLinks = t.raw('Navbar-links');
@@ -78,7 +91,10 @@ export default function Navbar() {
           ref={navRef}
           className="main_nav_article_top bg-glass-morph-bg text-white px-4 md:px-10 py-5 max-md:py-1 rounded-full max-md:rounded-md shadow-lg mx-auto flex items-center justify-between relative max-h-[70px] transition-colors duration-200"
         >
-          <Link href="/" className="relative w-[150px] h-[80px] flex items-center justify-center hover:cursor-pointer transition-transform duration-300 hover:scale-110">
+          <Link
+            href="/"
+            className="relative w-[150px] h-[80px] flex items-center justify-center hover:cursor-pointer transition-transform duration-300 hover:scale-110"
+          >
             <Image
               src="/eske_fasika_logo.png"
               sizes="(min-width: 66em) 33vw, (min-width: 44em) 50vw,100vw"
@@ -96,15 +112,25 @@ export default function Navbar() {
             ))}
           </div>
           <div className="hidden lg:flex space-x-2">
-            <Button className="bg-white border-[1px] border-black rounded-3xl px-8 py-[18px] box-border text-black">
-              Sign Up
-            </Button>
-            <Button
-              variant="outline"
-              className="bg-transparent border-[1px] border-black rounded-3xl px-8 py-[18px] box-border"
-            >
-              Sign In
-            </Button>
+            {!isLoggedIn && (
+              <Button
+                className="bg-white border-black rounded-3xl px-8 py-[18px] box-border text-black"
+                onClick={() => setAuthType('signUp')}
+              >
+                Sign Up
+              </Button>
+            )}
+            {isLoggedIn ? (
+              <Logout />
+            ) : (
+              <Button
+                variant="outline"
+                className="bg-transparent border-[1px]  rounded-3xl px-8 py-[18px] box-border"
+                onClick={() => setAuthType('signIn')}
+              >
+                Sign In
+              </Button>
+            )}
           </div>
           <button
             ref={menuButtonRef}
@@ -162,18 +188,33 @@ export default function Navbar() {
 
           {/* Buttons */}
           <div className="mt-6 flex flex-col space-y-4">
-            <Button className="bg-white border-[1px] border-[#9D4F09] rounded-3xl px-8 py-[18px] box-border text-[#9D4F09] hover:bg-[#e7e3dd9c]">
-              Sign Up
-            </Button>
-            <Button
-              variant="outline"
-              className="bg-transparent border-[1px] border-[#9D4F09] rounded-3xl px-8 py-[18px] box-border text-[#9D4F09] hover:bg-[#9d4e09c2]"
-            >
-              Sign In
-            </Button>
+            {!isLoggedIn && (
+              <Button
+                className="bg-white border-[1px] border-[#9D4F09] rounded-3xl px-8 py-[18px] box-border text-[#9D4F09] hover:bg-[#e7e3dd9c]"
+                onClick={() => setAuthType('signUp')}
+              >
+                Sign Up
+              </Button>
+            )}
+            {isLoggedIn ? (
+              <Logout />
+            ) : (
+              <Button
+                variant="outline"
+                className="bg-transparent border-[1px] border-[#9D4F09] rounded-3xl px-8 py-[18px] box-border text-[#9D4F09] hover:bg-[#9d4e09c2]"
+                onClick={() => setAuthType('signIn')}
+              >
+                Sign In
+              </Button>
+            )}
           </div>
         </div>
       </aside>
+      {authType?.length && (
+        <Modal>
+          {authType === 'signIn' ? <SignInForm isModal /> : <RegisterUserForm isModal />}
+        </Modal>
+      )}
     </nav>
   );
 }
