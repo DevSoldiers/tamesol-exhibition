@@ -23,7 +23,7 @@ const EmblaCarousel = () => {
     <section className="px-3 md:px-14 bg-cover bg-fixed absolute inset-0 h-[90dvh] overflow">
       <div className="absolute inset-0 overflow-hidden w-full h-full">
         <div className="relative w-full h-full">
-          <video
+          {/* <video
             autoPlay
             muted
             loop
@@ -35,7 +35,7 @@ const EmblaCarousel = () => {
               type="video/mp4"
             />
             Your browser does not support the video tag.
-          </video>
+          </video> */}
         </div>
       </div>
       <div className="absolute inset-0 bg-transparentBrownish"></div>

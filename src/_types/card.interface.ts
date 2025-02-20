@@ -7,4 +7,6 @@ export interface CardProps {
   descriptionTitle: string;
   buttonText: string;
   onButtonClick?: () => void;
+  width?: number;
+  height?: number;
 }

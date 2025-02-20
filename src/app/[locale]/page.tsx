@@ -10,7 +10,7 @@ import Suppliers from '@/_components/ui/Supplier_Companies';
 import HowToParticipate from '@/_components/ui/HowToParticipate';
 import Container from '@/_components/Container';
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className="">
       <section className="h-[90dvh]">

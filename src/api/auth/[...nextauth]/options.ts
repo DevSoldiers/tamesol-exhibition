@@ -9,7 +9,7 @@ export const authOptions: NextAuthOptions = {
                 phoneNumber: { label: "Phone Number", type: "text" },
                 password: { label: "Password", type: "password" },
             },
-            async authorize(credentials, req) {
+            async authorize(credentials) {
                 try {
                     // Login API call
                     const res = await fetch("https://iw2kq4i5clj6anz5amme62nb540fwlit.lambda-url.us-east-1.on.aws/api/v2/user/login", {

@@ -11,13 +11,15 @@ const Card: React.FC<CardProps> = ({
   description,
   buttonText,
   onButtonClick,
+  height,
+  width,
 }) => {
   return (
     <article className="max-w-sm w-full rounded-xl overflow-hidden shadow-lg hover:shadow-xl duration-300 bg-gradient-to-b from-orange-50 to-orange-100 md:max-w-full md:w-[95%] transform hover:-translate-y-1 transition-transform flex flex-col">
       <div className="relative h-40 md:h-48">
         <CImageCard
-          width={400}
-          height={180}
+          width={width || 400}
+          height={height || 180}
           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           sizes=" "
           imgSrc={imageSrc}

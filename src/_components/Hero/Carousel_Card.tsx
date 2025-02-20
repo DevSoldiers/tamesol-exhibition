@@ -23,7 +23,7 @@ export default function CarouselCard({
               {title}
             </h1>
             {/* Display the subtitle below the title */}
-            <p className="text-lg sm:text-xl md:text-2xl text-white text-center md:text-left mt-4 max-w-lg">
+            <p className="text-lg sm:text-xl md:text-2xl text-white text-center md:text-left mt-4 max-w-lg xl:max-w-3xl xl:leading-relaxed">
               {subTitle}
             </p>
             <div className="mt-6 flex gap-4">

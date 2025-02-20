@@ -12,13 +12,13 @@ export default function YznanuYshemtu() {
       </p>
       <div className="ygobgnu_wrapper flex flex-col md:flex-row gap-5 justify-between">
         <article className="w-full max-h-[400px] h rounded-md">
-          <video width="100%" height="150%" autoPlay loop playsInline muted>
+          {/* <video width="100%" height="150%" autoPlay loop playsInline muted>
             <source
               src="https://res.cloudinary.com/dzsa1ehta/video/upload/expo_lqouoh_dhab0l.mp4"
               type="video/mp4"
             />
             Your browser does not support the video tag.
-          </video>
+          </video> */}
         </article>
         <article
           className="w-full h-[400px] rounded-md bg-cover"
