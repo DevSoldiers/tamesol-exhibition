@@ -22,7 +22,7 @@ const RegisterUserForm = ({ isModal }: { isModal: boolean }) => {
   };
 
   useEffect(() => {
-    handleFlip();
+    if (flipped) handleFlip();
   }, [flipped]);
 
   return (
