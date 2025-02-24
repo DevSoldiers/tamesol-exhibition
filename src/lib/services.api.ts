@@ -1,7 +1,8 @@
 import axios from 'axios';
 
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
 export const api = axios.create({
-  baseURL: 'https://iw2kq4i5clj6anz5amme62nb540fwlit.lambda-url.us-east-1.on.aws/api/v2',
+  baseURL,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
