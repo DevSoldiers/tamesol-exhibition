@@ -13,6 +13,7 @@ import RegisterUserForm from '../Form/RegisterUser.form';
 import { ModalContext } from '@/lib/context/modal.context';
 import { useSession } from 'next-auth/react';
 import Logout from '../ui/Logout';
+import { AppProvider } from '@/lib/context/userform.context';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -212,7 +213,15 @@ export default function Navbar() {
       </aside>
       {authType?.length && (
         <Modal>
-          {authType === 'signIn' ? <SignInForm isModal /> : <RegisterUserForm isModal />}
+          {authType === 'signIn' ? (
+            <AppProvider>
+              <SignInForm isModal />
+            </AppProvider>
+          ) : (
+            <AppProvider>
+              <RegisterUserForm isModal />
+            </AppProvider>
+          )}
         </Modal>
       )}
     </nav>
