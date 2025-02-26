@@ -6,8 +6,6 @@ import { routing } from '@/i18n/routing';
 import { getMessages } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 import Footer from '@/_components/Footer';
-import { getServerSession } from 'next-auth';
-import { options } from '../api/auth/[...nextauth]/options';
 import Navbar from '@/_components/Navbar/Navbar';
 import { ModalContextProvider } from '@/lib/context/modal.context';
 import AuthProvider from '@/lib/context/authProvider.context';
@@ -46,8 +44,8 @@ export default async function RootLayout({
   }
 
   const content = await getMessages();
-  const session = await getServerSession(options);
-  console.log('server session===>', session);
+  // const session = await getServerSession(options);
+  // console.log('server session===>', session);
   return (
     <html lang="en">
       <body
