@@ -9,6 +9,8 @@ import Footer from '@/_components/Footer';
 import Navbar from '@/_components/Navbar/Navbar';
 import { ModalContextProvider } from '@/lib/context/modal.context';
 import AuthProvider from '@/lib/context/authProvider.context';
+import { headers } from 'next/headers';
+import Mini_Ticket_Page from './_Mini_Ticket_Page/page';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -44,23 +46,22 @@ export default async function RootLayout({
   }
 
   const content = await getMessages();
-  // const session = await getServerSession(options);
-  // console.log('server session===>', session);
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} antialiased`}
       >
-        <AuthProvider>
-          <NextIntlClientProvider messages={content}>
-            <ModalContextProvider>
-              <Navbar />
-            </ModalContextProvider>
-            {children}
-            {/* footer section */}
-            <Footer />
-          </NextIntlClientProvider>
-        </AuthProvider>
+        {/* <AuthProvider> */}
+        {/* <NextIntlClientProvider messages={content}> */}
+        {/* <ModalContextProvider> */}
+        {/* <Navbar /> */}
+        {/* </ModalContextProvider> */}
+        {/* {children} */}
+        {/* footer section */}
+        {/* <Footer /> */}
+        {/* </NextIntlClientProvider> */}
+        {/* </AuthProvider> */}
+        <Mini_Ticket_Page />
       </body>
     </html>
   );
