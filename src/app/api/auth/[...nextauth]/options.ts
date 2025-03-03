@@ -16,7 +16,6 @@ export const options: NextAuthOptions = {
       },
       async authorize(credentials) {
         const { phoneNumber, password, otp, images } = credentials!;
-        console.log('authorize called with==>', credentials);
         try {
           const user = await authService.register({
             phoneNumber,
@@ -25,7 +24,6 @@ export const options: NextAuthOptions = {
             images,
           });
           if (user) {
-            console.log('the user==>', user);
             return user;
           }
 
@@ -73,11 +71,9 @@ export const options: NextAuthOptions = {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         token.phoneNumber = (user as any).phoneNumber;
       }
-      console.log({ token, user });
       return token;
     },
     session: ({ session, token }) => {
-      console.log('session==>', session, token);
       if (token) {
         session.user = token;
       }

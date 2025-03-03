@@ -6,11 +6,11 @@ import { routing } from '@/i18n/routing';
 import { getMessages } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 import Footer from '@/_components/Footer';
-import { getServerSession } from 'next-auth';
-import { options } from '../api/auth/[...nextauth]/options';
 import Navbar from '@/_components/Navbar/Navbar';
 import { ModalContextProvider } from '@/lib/context/modal.context';
 import AuthProvider from '@/lib/context/authProvider.context';
+import { headers } from 'next/headers';
+import Mini_Ticket_Page from './_Mini_Ticket_Page/page';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -45,24 +45,44 @@ export default async function RootLayout({
     notFound();
   }
 
+  const headerData = headers();
   const content = await getMessages();
-  const session = await getServerSession(options);
-  console.log('server session===>', session);
+
+  // Safely parse the X-User-Info header
+  const user_info = (await headerData).get('X-User-Info');
+  let parsed_user_info = { token: '', phoneNumber: '' };
+
+  if (user_info) {
+    try {
+      parsed_user_info = JSON.parse(user_info);
+    } catch (error) {
+      console.error('Failed to parse X-User-Info:', error);
+    }
+  }
+
+  const { token, phoneNumber } = parsed_user_info;
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} antialiased`}
       >
-        <AuthProvider>
+        {!token ? (
+          <AuthProvider>
+            <NextIntlClientProvider messages={content}>
+              <ModalContextProvider>
+                <Navbar />
+              </ModalContextProvider>
+              {children}
+              {/* footer section  */}
+              <Footer />
+            </NextIntlClientProvider>
+          </AuthProvider>
+        ) : (
           <NextIntlClientProvider messages={content}>
-            <ModalContextProvider>
-              <Navbar />
-            </ModalContextProvider>
-            {children}
-            {/* footer section */}
-            <Footer />
+            <Mini_Ticket_Page cbeToken={token} phone={phoneNumber} />
           </NextIntlClientProvider>
-        </AuthProvider>
+        )}
       </body>
     </html>
   );

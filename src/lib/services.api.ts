@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getSession } from 'next-auth/react';
 
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
 export const api = axios.create({
@@ -17,6 +18,18 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+api.interceptors.request.use(async (config: any) => {
+  if (typeof window !== 'undefined') {
+    const session = await getSession();
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    if ((session as any)?.user?.token)
+      /* eslint-disable @typescript-eslint/no-explicit-any */
+      config.headers.Authorization = `Bearer ${(session as any)?.user?.token}`;
+    return config;
+  }
+});
 
 // api.interceptors.request.use(
 //     async (config) => {
