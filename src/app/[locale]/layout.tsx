@@ -45,23 +45,44 @@ export default async function RootLayout({
     notFound();
   }
 
+  const headerData = headers();
   const content = await getMessages();
+
+  // Safely parse the X-User-Info header
+  const user_info = (await headerData).get('X-User-Info');
+  let parsed_user_info = { token: '', phoneNumber: '' };
+
+  if (user_info) {
+    try {
+      parsed_user_info = JSON.parse(user_info);
+    } catch (error) {
+      console.error('Failed to parse X-User-Info:', error);
+    }
+  }
+
+  const { token, phoneNumber } = parsed_user_info;
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} antialiased`}
       >
-        {/* <AuthProvider> */}
-        {/* <NextIntlClientProvider messages={content}> */}
-        {/* <ModalContextProvider> */}
-        {/* <Navbar /> */}
-        {/* </ModalContextProvider> */}
-        {/* {children} */}
-        {/* footer section */}
-        {/* <Footer /> */}
-        {/* </NextIntlClientProvider> */}
-        {/* </AuthProvider> */}
-        <Mini_Ticket_Page />
+        {!token ? (
+          <AuthProvider>
+            <NextIntlClientProvider messages={content}>
+              <ModalContextProvider>
+                <Navbar />
+              </ModalContextProvider>
+              {children}
+              {/* footer section  */}
+              <Footer />
+            </NextIntlClientProvider>
+          </AuthProvider>
+        ) : (
+          <NextIntlClientProvider messages={content}>
+            <Mini_Ticket_Page cbeToken={token} phone={phoneNumber} />
+          </NextIntlClientProvider>
+        )}
       </body>
     </html>
   );
