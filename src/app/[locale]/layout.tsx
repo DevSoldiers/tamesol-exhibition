@@ -67,7 +67,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} antialiased`}
       >
-        {!token ? (
+        {token ? (
           <AuthProvider>
             <NextIntlClientProvider messages={content}>
               <ModalContextProvider>

@@ -10,10 +10,15 @@ export default function MiniTicketPage({ cbeToken, phone }: { cbeToken: string; 
 
   const initialValues = {
     quantity: 1,
+    ticketType: 'withOutFood',
   };
 
   const validationSchema = yup.object({
     quantity: yup.number().min(1, 'Quantity must be at least 1').required('Quantity is required'),
+    ticketType: yup
+      .string()
+      .oneOf(['withOutFood', 'withFood'], 'Invalid ticket type')
+      .required('Ticket type is required'),
   });
 
   const handleSubmit = async () => {
@@ -23,7 +28,9 @@ export default function MiniTicketPage({ cbeToken, phone }: { cbeToken: string; 
       /* eslint-disable @typescript-eslint/no-explicit-any */
       const tickets: any = await paymentService.buyTicket(
         { ...formik.values, phoneNumber: `+${phone}`, token: cbeToken },
-        '66adb95237cf6e1235893e5d'
+        formik.values.ticketType === 'withOutFood'
+          ? '67c5a413a95757b028aa57f7'
+          : '67c5a3dda95757b028aa57f4'
       );
       (window as any).myJsChannel.postMessage(tickets.checkout_url);
       /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -48,9 +55,9 @@ export default function MiniTicketPage({ cbeToken, phone }: { cbeToken: string; 
       </div>
 
       {/* Form Section */}
-      <div className="p-4 rounded-lg shadow-md mt-4">
+      <div className="p-4 rounded-lg shadow-md mt-4 bg-orange-100">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-[#8C2D85]">Addis Neger Expo 2017</h2>
+          <h2 className="text-2xl font-bold text-BroadcastChannel">Addis Neger Expo 2017</h2>
 
           <div className="text-left flex flex-col gap-5 mt-4">
             <label className={'text-lg text-BroadcastChannel font-semibold'}>ስንት ትኬት</label>
@@ -64,12 +71,42 @@ export default function MiniTicketPage({ cbeToken, phone }: { cbeToken: string; 
               required
               className="w-full border border-green-950 rounded-md px-4 py-2"
             />
+
+            {/* Radio Buttons for Ticket Type */}
+            <div className="flex flex-col gap-2">
+              <label className="text-lg font-semibold text-BroadcastChannel">ትኬት አይነት</label>
+              <div className="flex items-center gap-4">
+                <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="ticketType"
+                    value="withOutFood"
+                    checked={formik.values.ticketType === 'withOutFood'}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                  ያለ ምግብ - <span className="font-bold">100 ብር</span>
+                </label>
+                <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="ticketType"
+                    value="withFood"
+                    checked={formik.values.ticketType === 'withFood'}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                  ከምግብ ጋር - <span className="font-bold">150 ብር</span>
+                </label>
+              </div>
+            </div>
+
             <button
               className={`w-full mb-4 flex items-center justify-center py-2 rounded-md ${
                 formik.isSubmitting
                   ? 'bg-gray-400 cursor-not-allowed'
                   : `bg-secondarybrand hover:bg-secondarybrand`
-              } text-black`}
+              } text-white font-semibold`}
               onClick={() => {
                 formik.handleSubmit();
               }}
