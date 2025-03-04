@@ -30,7 +30,7 @@ export default async function Home() {
       <HowToParticipate />
 
       {/* sliding clients */}
-      <Container className="bg-white md:text-[64px] py-4 md:py-[80px]">
+      <Container className="bg-white md:text-[64px] py-4 md:py-[80px] mt-1">
         <ClientsCarousel />
       </Container>
     </main>
