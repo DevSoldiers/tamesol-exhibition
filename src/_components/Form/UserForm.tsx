@@ -40,7 +40,7 @@ export default function RegisterForm({ isModal }: { isModal: boolean }) {
   });
 
   return (
-    <div className="w-full flex items-center justify-center px-4 py-8 bg-gradient-to-r from-[#f28f37] to-[#b3aea7]">
+    <div className="w-full flex items-center justify-center md:px-4 md:py-8 bg-gradient-to-r from-[#f28f37] to-[#b3aea7]">
       <div className="relative bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-xl">
         {isModal && (
           <button

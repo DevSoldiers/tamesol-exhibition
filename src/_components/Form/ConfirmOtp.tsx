@@ -13,7 +13,7 @@ interface OtpFormValues {
 export default function OtpVerificationPage() {
   const inputRefs = useRef<HTMLInputElement[]>([]);
   const [message, setMessage] = useState<string>('');
-  const { state } = useContext(AppContext);
+  const { state, setState } = useContext(AppContext);
   const formik = useFormik<OtpFormValues>({
     initialValues: {
       otp: ['', '', '', ''],
@@ -40,6 +40,7 @@ export default function OtpVerificationPage() {
         if (result?.error) {
           setMessage(result.error);
         } else {
+          setState((prev) => ({ ...prev, flipped: true }));
           setMessage('Registration successful!');
         }
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
