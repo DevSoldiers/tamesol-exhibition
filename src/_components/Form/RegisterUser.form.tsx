@@ -26,7 +26,7 @@ const RegisterUserForm = ({ isModal }: { isModal: boolean }) => {
   }, [flipped]);
 
   return (
-    <div className="flip-card w-full flex items-center justify-center min-h-screen md:-mt-24">
+    <div className="flip-card w-full flex items-center justify-center">
       <div className="relative perspective w-full">
         <div
           ref={cardRef}

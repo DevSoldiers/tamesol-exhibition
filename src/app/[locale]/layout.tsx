@@ -72,8 +72,8 @@ export default async function RootLayout({
             <NextIntlClientProvider messages={content}>
               <ModalContextProvider>
                 <Navbar />
+                {children}
               </ModalContextProvider>
-              {children}
               {/* footer section  */}
               <Footer />
             </NextIntlClientProvider>

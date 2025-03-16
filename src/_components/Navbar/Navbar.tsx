@@ -3,17 +3,13 @@
 import { Button } from '@/_components/ui/button';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { useEffect, useState, useRef, useContext } from 'react';
+import { useEffect, useState, useRef, useContext, SetStateAction } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from '@/i18n/routing';
-import Modal from '@/_ui/Modal/Modal';
-import SignInForm from '../Form/SignIn.form';
-import RegisterUserForm from '../Form/RegisterUser.form';
 import { ModalContext } from '@/lib/context/modal.context';
 import { useSession } from 'next-auth/react';
 import Logout from '../ui/Logout';
-import { AppProvider } from '@/lib/context/userform.context';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,12 +24,7 @@ export default function Navbar() {
 
   // modal context
   const { modalState } = useContext(ModalContext);
-  const {
-    authType,
-    setAuthType,
-    setIsOpen: setModalIsOpen,
-    isOpen: isModalOpen,
-  } = modalState ?? {};
+  const { setAuthType, setIsOpen: setModalIsOpen } = modalState ?? {};
 
   const t = useTranslations();
   const navLinks = t.raw('Navbar-links');
@@ -90,6 +81,11 @@ export default function Navbar() {
     }
   }, [isOpen]);
 
+  const authModalHandler = (authType: SetStateAction<'signIn' | 'signUp' | null>) => {
+    setAuthType(authType);
+    setModalIsOpen(true);
+  };
+
   return (
     <nav className="sticky top-3 z-50 mt-6 w-full">
       <section className="w-full px-14 max-md:px-3 z-[80] relative">
@@ -121,10 +117,7 @@ export default function Navbar() {
             {!isLoggedIn && (
               <Button
                 className="bg-white border-black rounded-3xl px-8 py-[18px] box-border text-black"
-                onClick={() => {
-                  setAuthType('signUp');
-                  setModalIsOpen(true);
-                }}
+                onClick={() => authModalHandler('signUp')}
               >
                 Sign Up
               </Button>
@@ -135,10 +128,7 @@ export default function Navbar() {
               <Button
                 variant="outline"
                 className="bg-transparent border-[1px]  rounded-3xl px-8 py-[18px] box-border"
-                onClick={() => {
-                  setAuthType('signIn');
-                  setModalIsOpen(true);
-                }}
+                onClick={() => authModalHandler('signIn')}
               >
                 Sign In
               </Button>
@@ -199,11 +189,12 @@ export default function Navbar() {
           </div>
 
           {/* Buttons */}
+          {/* for mobile */}
           <div className="mt-6 flex flex-col space-y-4">
             {!isLoggedIn && (
               <Button
                 className="bg-white border-[1px] border-[#9D4F09] rounded-3xl px-8 py-[18px] box-border text-[#9D4F09] hover:bg-[#e7e3dd9c]"
-                onClick={() => setAuthType('signUp')}
+                onClick={() => authModalHandler('signUp')}
               >
                 Sign Up
               </Button>
@@ -214,7 +205,7 @@ export default function Navbar() {
               <Button
                 variant="outline"
                 className="bg-transparent border-[1px] border-[#9D4F09] rounded-3xl px-8 py-[18px] box-border text-[#9D4F09] hover:bg-[#9d4e09c2]"
-                onClick={() => setAuthType('signIn')}
+                onClick={() => authModalHandler('signIn')}
               >
                 Sign In
               </Button>
@@ -222,7 +213,7 @@ export default function Navbar() {
           </div>
         </div>
       </aside>
-      {authType?.length && isModalOpen && (
+      {/* {authType?.length && isModalOpen && (
         <Modal>
           {authType === 'signIn' ? (
             <AppProvider>
@@ -234,7 +225,7 @@ export default function Navbar() {
             </AppProvider>
           )}
         </Modal>
-      )}
+      )} */}
     </nav>
   );
 }

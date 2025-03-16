@@ -10,7 +10,7 @@ export default function SignInForm({ isModal = false }: { isModal: boolean }) {
   const [isSigning, setIsSigning] = useState<boolean>(false);
 
   const {
-    modalState: { onClose },
+    modalState: { onClose, setAuthType },
   } = useContext(ModalContext);
 
   const formik = useFormik({
@@ -45,7 +45,7 @@ export default function SignInForm({ isModal = false }: { isModal: boolean }) {
   });
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center px-4 py-8 bg-gradient-to-r">
+    <div className="w-full flex items-center justify-center px-4 py-8 bg-gradient-to-r">
       <div className="relative bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-xl">
         {isModal && (
           <button
@@ -114,11 +114,21 @@ export default function SignInForm({ isModal = false }: { isModal: boolean }) {
           <button
             type="submit"
             className="w-full bg-[#f28f37] text-white py-2 px-4 rounded-md hover:bg-[#f7a8389c] focus:outline-none focus:ring-2 focus:ring-[#f28f37] focus:ring-offset-2 transition-colors duration-300"
+            disabled={isSigning}
           >
             {isSigning ? 'Signing...' : 'Sign In'}
           </button>
           {message ? <small className="text-redishcolor">{message}</small> : null}
         </form>
+        <p className="text-gray-700 mt-3">
+          Already have an account?{' '}
+          <button
+            className="text-blue-600 hover:text-blue-800 underline"
+            onClick={() => setAuthType('signUp')}
+          >
+            Register
+          </button>
+        </p>
       </div>
     </div>
   );

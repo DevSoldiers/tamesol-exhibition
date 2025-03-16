@@ -1,12 +1,21 @@
+'use client';
 import Container from '@/_components/Container';
 import { CardProps } from '@/_types/card.interface';
 import { useTranslations } from 'next-intl';
 import Card from '../Cards/Card';
+import Modal from '@/_ui/Modal/Modal';
+import SignInForm from '../Form/SignIn.form';
+import { useContext } from 'react';
+import { ModalContext } from '@/lib/context/modal.context';
+import { AppProvider } from '@/lib/context/userform.context';
+import RegisterUserForm from '../Form/RegisterUser.form';
 
 export default function MegbyaTickets() {
   const t = useTranslations();
   const content: CardProps[] = t.raw('megbyaTickets');
-
+  const {
+    modalState: { isOpen, authType },
+  } = useContext(ModalContext);
   return (
     <Container>
       <p className="mb-3 text-black p-0 text-3xl text-center md:text-left">
@@ -26,6 +35,14 @@ export default function MegbyaTickets() {
           />
         ))}
       </article>
+
+      {isOpen && (
+        <Modal>
+          <AppProvider>
+            {authType == 'signIn' ? <SignInForm isModal /> : <RegisterUserForm isModal />}
+          </AppProvider>
+        </Modal>
+      )}
     </Container>
   );
 }

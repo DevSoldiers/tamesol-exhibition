@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import CImageCard from '../Cards/CImageCard';
 
 export default function CarouselCard({
@@ -27,12 +28,12 @@ export default function CarouselCard({
               {subTitle}
             </p>
             <div className="mt-6 flex gap-4">
-              <button className="px-6 py-2 text-black bg-white border rounded-full shadow-md hover:bg-gray-200 transition">
+              {/* <button className="px-6 py-2 text-black bg-white border rounded-full shadow-md hover:bg-gray-200 transition">
                 {signUp}
               </button>
               <button className="px-6 py-2 text-white bg-orange-500 rounded-full shadow-md hover:bg-orange-600 transition">
                 {login}
-              </button>
+              </button> */}
             </div>
           </section>
           {/* right section */}

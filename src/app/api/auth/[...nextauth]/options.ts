@@ -16,7 +16,6 @@ export const options: NextAuthOptions = {
       },
       async authorize(credentials) {
         const { phoneNumber, password, otp, images } = credentials!;
-        console.log('authorize hitted');
 
         try {
           let formattedImages: File[] = [];

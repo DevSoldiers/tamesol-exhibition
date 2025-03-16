@@ -1,18 +1,17 @@
 'use client';
 import { ModalContext } from '@/lib/context/modal.context';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect } from 'react';
 
 export default function Modal({ children }: { children: React.ReactNode }) {
-  const [isOpen, setIsOpen] = useState(true);
   const {
-    modalState: { setAuthType },
+    modalState: { setAuthType, setIsOpen, isOpen },
   } = useContext(ModalContext);
 
   const onClose = useCallback(() => {
     document.body.style.overflow = 'unset';
     setIsOpen(false);
     setAuthType(null);
-  }, [setAuthType]);
+  }, [setAuthType, setIsOpen]);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';

@@ -20,12 +20,12 @@ export const ModalContext = createContext<ModalContextType>({
     isOpen: false,
     authType: null,
     setAuthType: () => null,
-    setIsOpen: () => false,
+    setIsOpen: () => true,
   },
 });
 
 export const ModalContextProvider = ({ children }: { children: ReactNode }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [authType, setAuthType] = useState<'signIn' | 'signUp' | null>(null);
 
   const onClose = () => {

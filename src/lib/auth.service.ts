@@ -27,13 +27,6 @@ export const authService = {
     images: File[];
   }) {
     try {
-      console.log({
-        phoneNumber,
-        password,
-        otp,
-        images,
-      });
-
       const formData = new FormData();
       formData.append('phoneNumber', phoneNumber);
       formData.append('password', password);
@@ -47,14 +40,12 @@ export const authService = {
         console.error('Images is not an array!', images);
       }
 
-      console.log('Sending formData:', [...formData.entries()]);
-
       const user = await api.post('/user', formData);
 
       return user.data.data;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
-      console.log('error==>', err);
+      console.error(err);
       throw new Error(
         err?.response?.data?.message ? err.response.data.message : 'Error registering'
       );

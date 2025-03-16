@@ -17,9 +17,8 @@ export default function OtpVerificationPage() {
   const [message, setMessage] = useState<string>('');
   const { state } = useContext(AppContext);
   const {
-    modalState: { setIsOpen, isOpen },
+    modalState: { setIsOpen },
   } = useContext(ModalContext);
-  console.log(isOpen);
   const formik = useFormik<OtpFormValues>({
     initialValues: {
       otp: ['', '', '', ''],
