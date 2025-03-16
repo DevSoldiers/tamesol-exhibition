@@ -28,7 +28,12 @@ export default function Navbar() {
 
   // modal context
   const { modalState } = useContext(ModalContext);
-  const { authType, setAuthType } = modalState ?? {};
+  const {
+    authType,
+    setAuthType,
+    setIsOpen: setModalIsOpen,
+    isOpen: isModalOpen,
+  } = modalState ?? {};
 
   const t = useTranslations();
   const navLinks = t.raw('Navbar-links');
@@ -116,7 +121,10 @@ export default function Navbar() {
             {!isLoggedIn && (
               <Button
                 className="bg-white border-black rounded-3xl px-8 py-[18px] box-border text-black"
-                onClick={() => setAuthType('signUp')}
+                onClick={() => {
+                  setAuthType('signUp');
+                  setModalIsOpen(true);
+                }}
               >
                 Sign Up
               </Button>
@@ -127,7 +135,10 @@ export default function Navbar() {
               <Button
                 variant="outline"
                 className="bg-transparent border-[1px]  rounded-3xl px-8 py-[18px] box-border"
-                onClick={() => setAuthType('signIn')}
+                onClick={() => {
+                  setAuthType('signIn');
+                  setModalIsOpen(true);
+                }}
               >
                 Sign In
               </Button>
@@ -211,7 +222,7 @@ export default function Navbar() {
           </div>
         </div>
       </aside>
-      {authType?.length && (
+      {authType?.length && isModalOpen && (
         <Modal>
           {authType === 'signIn' ? (
             <AppProvider>

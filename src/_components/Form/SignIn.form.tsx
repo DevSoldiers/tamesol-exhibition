@@ -1,5 +1,6 @@
 'use client';
 import { ModalContext } from '@/lib/context/modal.context';
+import { sanitizer } from '@/lib/utils';
 import { useFormik } from 'formik';
 import { signIn } from 'next-auth/react';
 import { useContext, useState } from 'react';
@@ -18,7 +19,9 @@ export default function SignInForm({ isModal = false }: { isModal: boolean }) {
       password: '',
     },
     onSubmit: async (values) => {
-      const { phoneNumber, password } = values ?? {};
+      // eslint-disable-next-line prefer-const
+      let { phoneNumber, password } = values ?? {};
+      phoneNumber = sanitizer(phoneNumber);
       try {
         setIsSigning(true);
         const result = await signIn('Signin', {
@@ -114,6 +117,7 @@ export default function SignInForm({ isModal = false }: { isModal: boolean }) {
           >
             {isSigning ? 'Signing...' : 'Sign In'}
           </button>
+          {message ? <small className="text-redishcolor">{message}</small> : null}
         </form>
       </div>
     </div>

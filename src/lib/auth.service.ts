@@ -24,28 +24,39 @@ export const authService = {
     phoneNumber: string;
     password: string;
     otp: string;
-    images: string;
+    images: File[];
   }) {
     try {
+      console.log({
+        phoneNumber,
+        password,
+        otp,
+        images,
+      });
+
       const formData = new FormData();
       formData.append('phoneNumber', phoneNumber);
       formData.append('password', password);
       formData.append('otp', otp);
 
-      if (images) {
-        formData.append('images[]', images);
+      if (Array.isArray(images)) {
+        images.forEach((image) => {
+          formData.append('images', image);
+        });
+      } else {
+        console.error('Images is not an array!', images);
       }
 
-      const user = await api.post('/user', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      console.log('Sending formData:', [...formData.entries()]);
+
+      const user = await api.post('/user', formData);
+
       return user.data.data;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
-      throw Error(
-        err?.response?.data?.message ? err.response.data.message : 'Error registering in'
+      console.log('error==>', err);
+      throw new Error(
+        err?.response?.data?.message ? err.response.data.message : 'Error registering'
       );
     }
   },

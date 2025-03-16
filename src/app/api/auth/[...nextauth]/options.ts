@@ -16,13 +16,31 @@ export const options: NextAuthOptions = {
       },
       async authorize(credentials) {
         const { phoneNumber, password, otp, images } = credentials!;
+        console.log('authorize hitted');
+
         try {
+          let formattedImages: File[] = [];
+
+          if (typeof images === 'string') {
+            try {
+              const parsedImages = JSON.parse(images);
+              if (Array.isArray(parsedImages)) {
+                formattedImages = parsedImages.map((image) => new File([], image.name || 'image'));
+              }
+            } catch (err) {
+              console.error('Error parsing images:', err);
+            }
+          } else if (Array.isArray(images)) {
+            formattedImages = images;
+          }
+
           const user = await authService.register({
             phoneNumber,
             password,
             otp,
-            images,
+            images: formattedImages,
           });
+
           if (user) {
             return user;
           }

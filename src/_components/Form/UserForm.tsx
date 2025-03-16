@@ -3,11 +3,14 @@ import { ModalContext } from '@/lib/context/modal.context';
 import { AppContext } from '@/lib/context/userform.context';
 import { registerUserSchema } from '@/lib/schema.auth';
 import api from '@/lib/services.api';
+import { sanitizer } from '@/lib/utils';
 import { useFormik } from 'formik';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 export default function RegisterForm({ isModal }: { isModal: boolean }) {
+  const [isSendingOTP, setIsSendingOTP] = useState<boolean>(false);
   const { setState } = useContext(AppContext);
+
   const {
     modalState: { onClose },
   } = useContext(ModalContext);
@@ -17,14 +20,16 @@ export default function RegisterForm({ isModal }: { isModal: boolean }) {
       phoneNumber: '',
       password: '',
       confirmPassword: '',
-      images: [],
+      images: [] as File[],
     },
     validationSchema: registerUserSchema,
     onSubmit: async (values) => {
       try {
+        setIsSendingOTP(true);
         const { phoneNumber, password, images } = values ?? {};
-        const response = await api.post(`/otp/sendOtp?phoneNumber=${values.phoneNumber}`);
+        const response = await api.post(`/otp/sendOtp?phoneNumber=${phoneNumber}`);
         if (response.data) {
+          setIsSendingOTP(false);
           setState({
             phoneNumber,
             password,
@@ -33,6 +38,7 @@ export default function RegisterForm({ isModal }: { isModal: boolean }) {
           });
         }
       } catch (error) {
+        setIsSendingOTP(false);
         console.error('Registration failed:', error);
         alert('Registration failed. Please try again.');
       }
@@ -68,8 +74,12 @@ export default function RegisterForm({ isModal }: { isModal: boolean }) {
               type="text"
               id="phoneNumber"
               name="phoneNumber"
-              value={formik.values.phoneNumber}
-              onChange={formik.handleChange}
+              value={sanitizer(formik.values.phoneNumber)}
+              // onChange={formik.handleChange}
+              onChange={(e) => {
+                const sanitizedValue = e.target.value.replace(/\s+/g, ''); // Remove all spaces
+                formik.setFieldValue('phoneNumber', sanitizedValue);
+              }}
               onBlur={formik.handleBlur}
               placeholder="Enter your phone number"
               className={`mt-1 block w-full px-3 py-2 border ${
@@ -146,16 +156,16 @@ export default function RegisterForm({ isModal }: { isModal: boolean }) {
               onBlur={formik.handleBlur}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#f28f37] focus:border-[#f28f37]"
             />
-            {formik.touched.images && formik.errors.images && (
+            {/* {formik.touched.images && formik.errors.images && (
               <p className="mt-2 text-sm text-[#b51f1b]">{formik.errors.images}</p>
-            )}
+            )} */}
           </div>
 
           <button
             type="submit"
             className="w-full bg-[#f28f37] text-white py-2 px-4 rounded-md hover:bg-[#f7a8389c] focus:outline-none focus:ring-2 focus:ring-[#f28f37] focus:ring-offset-2 transition-colors duration-300"
           >
-            Register
+            {isSendingOTP ? '...Sending OTP' : 'Register'}
           </button>
         </form>
       </div>

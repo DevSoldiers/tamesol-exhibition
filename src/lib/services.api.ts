@@ -5,7 +5,7 @@ const baseURL = process.env.NEXT_PUBLIC_API_URL;
 export const api = axios.create({
   baseURL,
   headers: {
-    'Content-Type': 'application/json',
+    // 'Content-Type': 'application/json',
     Accept: 'application/json',
   },
 });
@@ -27,8 +27,8 @@ api.interceptors.request.use(async (config: any) => {
     if ((session as any)?.user?.token)
       /* eslint-disable @typescript-eslint/no-explicit-any */
       config.headers.Authorization = `Bearer ${(session as any)?.user?.token}`;
-    return config;
   }
+  return config;
 });
 
 // api.interceptors.request.use(

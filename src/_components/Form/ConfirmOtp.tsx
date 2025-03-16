@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import { useContext, useRef, useState } from 'react';
 import { AppContext } from '@/lib/context/userform.context';
 import { signIn } from 'next-auth/react';
+import { ModalContext } from '@/lib/context/modal.context';
 
 interface OtpFormValues {
   otp: string[];
@@ -12,8 +13,13 @@ interface OtpFormValues {
 
 export default function OtpVerificationPage() {
   const inputRefs = useRef<HTMLInputElement[]>([]);
+  const [verifyOTP, setVerifyOTP] = useState<boolean>(false);
   const [message, setMessage] = useState<string>('');
-  const { state, setState } = useContext(AppContext);
+  const { state } = useContext(AppContext);
+  const {
+    modalState: { setIsOpen, isOpen },
+  } = useContext(ModalContext);
+  console.log(isOpen);
   const formik = useFormik<OtpFormValues>({
     initialValues: {
       otp: ['', '', '', ''],
@@ -25,6 +31,7 @@ export default function OtpVerificationPage() {
     }),
     onSubmit: async (values) => {
       try {
+        setVerifyOTP(true);
         const otp = values.otp.join('');
         const { phoneNumber, password, images } = state ?? {};
 
@@ -36,16 +43,19 @@ export default function OtpVerificationPage() {
           images,
           otp,
         });
-
         if (result?.error) {
           setMessage(result.error);
+          setVerifyOTP(false);
         } else {
-          setState((prev) => ({ ...prev, flipped: true }));
+          // setState((prev) => ({ ...prev, flipped: true }));
           setMessage('Registration successful!');
+          setVerifyOTP(false);
+          setIsOpen(false);
         }
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         setMessage('An error occurred. Please try again.');
+        setVerifyOTP(false);
       }
     },
   });
@@ -102,7 +112,7 @@ export default function OtpVerificationPage() {
             type="submit"
             className="w-full bg-[#f28f37] text-white py-2 px-4 rounded-md hover:bg-[#f7a8389c] focus:outline-none focus:ring-2 focus:ring-[#f28f37] focus:ring-offset-2"
           >
-            Verify OTP
+            {verifyOTP ? '...verifying OTP' : 'Verify OTP'}
           </button>
           {message && (
             <p
