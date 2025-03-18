@@ -1,6 +1,6 @@
 'use client';
 
-import { useQRCode } from 'next-qrcode';
+import QRDownloadable from '@/_components/QRDownload';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -9,7 +9,6 @@ export default function MyTickets() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [ticketData, setTicketData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const { Canvas } = useQRCode();
 
   const baseURL = process.env.NEXT_PUBLIC_API_URL;
   const params = useParams<{ id: string }>();
@@ -49,34 +48,9 @@ export default function MyTickets() {
           ticketData?.map((ticket: any) => (
             <div
               key={ticket._id}
-              className="bg-white shadow-md p-4 rounded-lg flex items-center space-x-4"
+              className="relative bg-white shadow-lg p-6 rounded-xl flex items-center space-x-6 w-full"
             >
-              <div className="w-24 h-24 flex items-center justify-center bg-gray-200 rounded-md">
-                <Canvas
-                  text={ticket._id}
-                  options={{
-                    errorCorrectionLevel: 'M',
-                    margin: 2,
-                    scale: 4,
-                    width: 100,
-                    color: { dark: '#000', light: '#FFFFFF' },
-                  }}
-                />
-              </div>
-              <div className="flex-1">
-                <h2 className="text-lg font-semibold text-gray-700">{ticket.event.title}</h2>
-                <p className="text-gray-500 text-sm">
-                  Lottery Number: <span className="font-medium">{ticket.lotteryNumber}</span>
-                </p>
-                <p className="text-gray-500 text-sm">
-                  Price: <span className="font-medium">${ticket.event.price}</span>
-                </p>
-                <p
-                  className={`text-sm font-medium ${ticket.paymentHistory.status === 'success' ? 'text-green-600' : 'text-red-600'}`}
-                >
-                  Payment: {ticket.paymentHistory.status}
-                </p>
-              </div>
+              <QRDownloadable id={ticket._id} />
             </div>
           ))}
         </div>
