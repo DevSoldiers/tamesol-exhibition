@@ -48,18 +48,53 @@ export default function MiniTicketPage({ cbeToken, phone }: { cbeToken: string; 
   });
 
   return (
-    <div className="max-w-6xl mx-auto px-4">
+    <div className="max-w-6xl mx-auto px-1 mt-10">
       {/* Image Section */}
-      <div className="mt-4 w-full">
-        <img src="CBE_Birr.webp" alt="" className="w-full" />
+      <div className="mt-4 w-full m-auto flex justify-center">
+        <img src="CBE_LOGO_TRANSPARENT.png" alt="" className="w-36" />
       </div>
 
       {/* Form Section */}
-      <div className="p-4 rounded-lg shadow-md mt-4 bg-orange-100">
+      <div className="p-4 rounded-lg mt-4">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-BroadcastChannel">Addis Neger Expo 2017</h2>
+          <h2 className=" text-BroadcastChannel font-bold text-2xl">
+            Addis Neger <br />
+            <span className="font-black text-3xl">Expo 2017</span>
+          </h2>
 
-          <div className="text-left flex flex-col gap-5 mt-4">
+          {/* Radio Buttons for Ticket Type */}
+          <div className="flex flex-col gap-2 mt-5">
+            <label className="text-lg font-semibold text-BroadcastChannel text-left">
+              ትኬት አይነት
+            </label>
+            <div className="flex items-center gap-4 flex-wrap md:flex-row">
+              <button
+                type="button"
+                className={`px-4 py-2 rounded-md font-semibold ${
+                  formik.values.ticketType === 'withOutFood'
+                    ? 'bg-BroadcastChannel text-white'
+                    : 'bg-gray-200 text-black'
+                }`}
+                onClick={() => formik.setFieldValue('ticketType', 'withOutFood')}
+              >
+                ያለ ምግብ - <span className="font-bold">100 ብር</span>
+              </button>
+
+              <button
+                type="button"
+                className={`px-4 py-2 rounded-md font-semibold ${
+                  formik.values.ticketType === 'withFood'
+                    ? 'bg-BroadcastChannel text-white'
+                    : 'bg-gray-200 text-black'
+                }`}
+                onClick={() => formik.setFieldValue('ticketType', 'withFood')}
+              >
+                ከምግብ ጋር - <span className="font-bold">150 ብር</span>
+              </button>
+            </div>
+          </div>
+
+          <div className="text-left flex flex-col gap-2 mt-4">
             <label className={'text-lg text-BroadcastChannel font-semibold'}>ስንት ትኬት</label>
             <input
               type="number"
@@ -72,41 +107,12 @@ export default function MiniTicketPage({ cbeToken, phone }: { cbeToken: string; 
               className="w-full border border-green-950 rounded-md px-4 py-2"
             />
 
-            {/* Radio Buttons for Ticket Type */}
-            <div className="flex flex-col gap-2">
-              <label className="text-lg font-semibold text-BroadcastChannel">ትኬት አይነት</label>
-              <div className="flex items-center gap-4">
-                <label className="flex items-center gap-2">
-                  <input
-                    type="radio"
-                    name="ticketType"
-                    value="withOutFood"
-                    checked={formik.values.ticketType === 'withOutFood'}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                  ያለ ምግብ - <span className="font-bold">100 ብር</span>
-                </label>
-                <label className="flex items-center gap-2">
-                  <input
-                    type="radio"
-                    name="ticketType"
-                    value="withFood"
-                    checked={formik.values.ticketType === 'withFood'}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                  />
-                  ከምግብ ጋር - <span className="font-bold">150 ብር</span>
-                </label>
-              </div>
-            </div>
-
             <button
               className={`w-full mb-4 flex items-center justify-center py-2 rounded-md ${
                 formik.isSubmitting
                   ? 'bg-gray-400 cursor-not-allowed'
                   : `bg-secondarybrand hover:bg-secondarybrand`
-              } text-white font-semibold`}
+              } text-white font-semibold mt-7`}
               onClick={() => {
                 formik.handleSubmit();
               }}
