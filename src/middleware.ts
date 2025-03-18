@@ -12,7 +12,6 @@ export default async function middleware(request: NextRequest) {
   const host = request.nextUrl.host;
   const pathName = request.nextUrl.pathname;
   response.headers.set('X-Current-URL', `${host}${pathName}`);
-
   // Extract token from Authorization header
   const authHeader = request.headers.get('authorization');
   if (authHeader) {
