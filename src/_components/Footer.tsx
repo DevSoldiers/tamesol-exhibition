@@ -1,4 +1,4 @@
-import { FaInstagram, FaFacebookF, FaYoutube, FaTelegram } from 'react-icons/fa';
+import { FaInstagram, FaFacebookF, FaTelegram } from 'react-icons/fa';
 import Image from 'next/image';
 
 const Footer = () => {
@@ -69,13 +69,16 @@ const Footer = () => {
         <div className="border-t border-gray-700 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm">© 2025 Tamesol Communications, Inc. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <a href="https://www.facebook.com/Addisnegerexpo?mibextid=ZbWKwL" target='_blank'>
+            <a href="https://www.facebook.com/Addisnegerexpo?mibextid=ZbWKwL" target="_blank">
               <FaFacebookF className="text-lg hover:text-white cursor-pointer" />
             </a>
-            <a href="https://www.instagram.com/invites/contact/?igsh=1hjxbc2rhp4g5&utm_content=tc4haq7" target='_blank'>
+            <a
+              href="https://www.instagram.com/invites/contact/?igsh=1hjxbc2rhp4g5&utm_content=tc4haq7"
+              target="_blank"
+            >
               <FaInstagram className="text-lg hover:text-white cursor-pointer" />
             </a>
-            <a href="https://www.telegram.me/cometabayneh" target='_blank'>
+            <a href="https://www.telegram.me/cometabayneh" target="_blank">
               <FaTelegram className="text-lg hover:text-white cursor-pointer" />
             </a>
           </div>

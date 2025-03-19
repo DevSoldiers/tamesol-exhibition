@@ -59,7 +59,7 @@ export default async function middleware(request: NextRequest) {
         // Set user info in headers
         response.headers.set(
           'X-User-Info',
-          JSON.stringify({ token, phoneNumber: "+" + userData?.phone })
+          JSON.stringify({ token, phoneNumber: '+' + userData?.phone })
         );
       } catch (error) {
         console.error('Error fetching user data:', error);
