@@ -18,18 +18,19 @@ export const paymentService = {
   },
 
   async buyTicket(
-    body: Record<string, unknown>,
-    selectedPaymentMethodID: string
+    body: Record<string, unknown>
+    // selectedPaymentMethodID: string
   ): Promise<IBuyTicketResponse> {
     try {
       const response = await api.post(`/pay/initialize`, {
         ...body,
         event: '6708f8c5a924c80e86d287ec',
-        paymentMethod: selectedPaymentMethodID,
+        paymentMethod: '66adb95237cf6e1235893e5d',
       });
       return response.data.data;
     } catch (error: unknown) {
       /* eslint-disable @typescript-eslint/no-explicit-any */
+      console.log('the error==>', error);
       throw new Error((error as any)?.response?.data?.message || 'An error occurred');
     }
   },
