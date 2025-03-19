@@ -8,6 +8,7 @@ import { useFormik } from 'formik';
 import { useContext, useState } from 'react';
 
 export default function RegisterForm({ isModal }: { isModal: boolean }) {
+  const [hasError, setHasError] = useState(false);
   const [isSendingOTP, setIsSendingOTP] = useState<boolean>(false);
   const { setState } = useContext(AppContext);
   const {
@@ -24,6 +25,7 @@ export default function RegisterForm({ isModal }: { isModal: boolean }) {
     validationSchema: registerUserSchema,
     onSubmit: async (values) => {
       try {
+        setHasError(false);
         setIsSendingOTP(true);
         const { phoneNumber, password, images } = values ?? {};
         const response = await api.post(`/otp/sendOtp?phoneNumber=${phoneNumber}`);
@@ -38,8 +40,8 @@ export default function RegisterForm({ isModal }: { isModal: boolean }) {
         }
       } catch (error) {
         setIsSendingOTP(false);
+        setHasError(true);
         console.error('Registration failed:', error);
-        alert('Registration failed. Please try again.');
       }
     },
   });
@@ -166,6 +168,7 @@ export default function RegisterForm({ isModal }: { isModal: boolean }) {
         >
           {isSendingOTP ? '...Sending OTP' : 'Register'}
         </button>
+        {hasError && <p>Registration failed, please try again.</p>}
         <p className="text-gray-700 mt-3">
           Already have an account?{' '}
           <button

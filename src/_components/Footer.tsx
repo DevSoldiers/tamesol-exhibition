@@ -1,4 +1,4 @@
-import { FaInstagram, FaFacebookF, FaGithub, FaYoutube } from 'react-icons/fa';
+import { FaInstagram, FaFacebookF, FaYoutube } from 'react-icons/fa';
 import Image from 'next/image';
 
 const Footer = () => {
@@ -15,7 +15,7 @@ const Footer = () => {
               alt="addis neger eske fasika"
               style={{ width: 'auto', height: 'auto' }}
             />
-            <p className="text-center text-sm md:text-left">123 Main Street, Anytown, CA 12345</p>
+            {/* <p className="text-center text-sm md:text-left">Bole, Mega Building 3rd floor</p> */}
           </div>
           {/* Right Section - Links & Second Logo */}
           <div className="flex flex-col md:flex-row md:justify-between items-center md:items-start mt-8 md:mt-0">
@@ -25,17 +25,17 @@ const Footer = () => {
                 <ul className="space-y-2 mt-2 text-gray-400">
                   <li>
                     <a href="#" className="hover:text-white">
-                      Features
+                      Home
                     </a>
                   </li>
                   <li>
                     <a href="#" className="hover:text-white">
-                      Categories
+                      About Us
                     </a>
                   </li>
                   <li>
                     <a href="#" className="hover:text-white">
-                      Reviews
+                      Contact
                     </a>
                   </li>
                 </ul>
@@ -67,11 +67,10 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-700 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm">© 2024 Your Company, Inc. All rights reserved.</p>
+          <p className="text-sm">© 2025 Tamesol Communications, Inc. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <FaFacebookF className="text-lg hover:text-white cursor-pointer" />
             <FaInstagram className="text-lg hover:text-white cursor-pointer" />
-            <FaGithub className="text-lg hover:text-white cursor-pointer" />
             <FaYoutube className="text-lg hover:text-white cursor-pointer" />
           </div>
         </div>
