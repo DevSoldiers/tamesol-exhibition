@@ -39,7 +39,11 @@ export default function MiniTicketPage({ cbeToken, phone }: { cbeToken: string; 
         </div>
       </div>
 
-      {!showTicketList ? <BuyTickets cbeToken={cbeToken} phone={phone} /> : <MyTickets />}
+      {!showTicketList ? (
+        <BuyTickets cbeToken={cbeToken} phone={phone} />
+      ) : (
+        <MyTickets cbeToken={cbeToken} />
+      )}
       <MobileModal cbeToken={cbeToken} phone={phone} />
     </div>
   );

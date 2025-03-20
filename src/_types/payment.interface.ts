@@ -24,3 +24,76 @@ export interface IPaymentMethod {
   url: string;
   _id: string;
 }
+
+// ticket data
+interface User {
+  _id: string;
+  phoneNumber: string;
+  publicUrl: string[];
+  secureUrl: string[];
+  role: string;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+interface Event {
+  _id: string;
+  title: string;
+  description: string;
+  price: number;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+interface PaymentMethod {
+  _id: string;
+  name: string;
+  logoPublicUrl: string[];
+  logoSecureUrl: string[];
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+interface PaymentHistory {
+  _id: string;
+  phoneNumber: string;
+  paymentMethod: PaymentMethod;
+  tx_ref: string;
+  status: string;
+  event: string;
+  price: number;
+  quantity: number;
+  totalBought: number;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+  cbeTxnRef: string;
+  paidAmount: number;
+}
+
+interface Ticket {
+  _id: string;
+  user: User;
+  isUsed: boolean;
+  event: Event;
+  paymentHistory: PaymentHistory;
+  lotteryNumber: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+export type TTicketList = Ticket[];
+
+export interface TTicketListResponse {
+  data: {
+    data: {
+      tickets: Ticket[];
+    };
+  };
+}
