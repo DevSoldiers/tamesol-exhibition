@@ -52,7 +52,7 @@ export default function BuyTickets({ cbeToken, phone }: { cbeToken: string; phon
       <div className="p-4 rounded-lg mt-4">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-BroadcastChannel">
-            Addis Neger <span className="font-black text-3xl">Expo 2017</span>
+            CBE Birr <span className="font-black text-3xl">Expo 2017</span>
           </h2>
 
           <div className="text-left flex flex-col gap-2 mt-4">
