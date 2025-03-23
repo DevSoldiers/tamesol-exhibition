@@ -24,7 +24,7 @@ export const paymentService = {
     try {
       const response = await api.post(`/pay/initialize`, {
         ...body,
-        event: '6708f8c5a924c80e86d287ec',
+        event: '67dfee98d5732a7e752b6012',
         paymentMethod: '66adb95237cf6e1235893e5d',
       });
       return response.data.data;
