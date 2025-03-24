@@ -25,6 +25,7 @@ export default function BuyTickets({ cbeToken, phone }: { cbeToken: string; phon
     formik.setSubmitting(true);
     setError('');
     try {
+      console.log('formikvale0>', formik.values);
       /* eslint-disable @typescript-eslint/no-explicit-any */
       const tickets: any = await paymentService.buyTicket({
         ...formik.values,
@@ -85,7 +86,7 @@ export default function BuyTickets({ cbeToken, phone }: { cbeToken: string; phon
                     ያለ ምግብ - <span className="font-bold">100 ብር</span>
                   </span>
                 </label>
-                <label className="flex items-center gap-2 cursor-pointer">
+                {/* <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="radio"
                     name="ticketType"
@@ -98,7 +99,7 @@ export default function BuyTickets({ cbeToken, phone }: { cbeToken: string; phon
                   <span className="text-gray-700">
                     ከምግብ ጋር - <span className="font-bold">150 ብር</span>
                   </span>
-                </label>
+                </label> */}
               </div>
             </div>
 
