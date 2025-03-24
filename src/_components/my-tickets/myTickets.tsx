@@ -64,7 +64,7 @@ export default function MyTickets({ cbeToken }: { cbeToken: string }) {
               <Image src={'/TICKETS@4x.png'} alt="" fill />
               <div className="absolute z-40 right-0 top-2">
                 <Canvas
-                  text={ticket._id || 'https://example.com'}
+                  text={`https://www.addisnegerexpo.com/${ticket._id}` || 'https://example.com'}
                   options={{ width: 130, margin: 2 }}
                 />
               </div>
