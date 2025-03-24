@@ -22,9 +22,13 @@ export const paymentService = {
     // selectedPaymentMethodID: string
   ): Promise<IBuyTicketResponse> {
     try {
+      console.log('body-->', body);
+      const { ticketType } = body ?? {};
+      const event =
+        ticketType === 'withOutFood' ? '67dfee98d5732a7e752b6012' : '67e1436ceb4b488338620f35';
       const response = await api.post(`/pay/initialize`, {
         ...body,
-        event: '67dfee98d5732a7e752b6012',
+        event,
         paymentMethod: '66adb95237cf6e1235893e5d',
       });
       return response.data.data;

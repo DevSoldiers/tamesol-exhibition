@@ -10,7 +10,7 @@ export default function BuyTickets({ cbeToken, phone }: { cbeToken: string; phon
 
   const initialValues = {
     quantity: 1,
-    // ticketType: 'withOutFood',
+    ticketType: 'withOutFood',
   };
 
   const validationSchema = yup.object({
@@ -26,12 +26,11 @@ export default function BuyTickets({ cbeToken, phone }: { cbeToken: string; phon
     setError('');
     try {
       /* eslint-disable @typescript-eslint/no-explicit-any */
-      const tickets: any = await paymentService.buyTicket(
-        { ...formik.values, phoneNumber: phone, token: cbeToken }
-        // formik.values.ticketType === 'withOutFood'
-        //   ? '67c5a413a95757b028aa57f7'
-        //   : '67c5a3dda95757b028aa57f4'
-      );
+      const tickets: any = await paymentService.buyTicket({
+        ...formik.values,
+        phoneNumber: phone,
+        token: cbeToken,
+      });
       (window as any).myJsChannel.postMessage(tickets?.createPayment?.checkout_url);
       /* eslint-disable @typescript-eslint/no-explicit-any */
     } catch (error: any) {
@@ -69,7 +68,7 @@ export default function BuyTickets({ cbeToken, phone }: { cbeToken: string; phon
             />
 
             {/* Radio Buttons for Ticket Type */}
-            {/* <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
               <label className="text-lg font-semibold text-BroadcastChannel">ትኬት አይነት</label>
               <div className="flex gap-4 flex-wrap md:flex-row flex-col justify-start py-5">
                 <label className="flex items-center gap-2 cursor-pointer">
@@ -101,7 +100,7 @@ export default function BuyTickets({ cbeToken, phone }: { cbeToken: string; phon
                   </span>
                 </label>
               </div>
-            </div> */}
+            </div>
 
             <button
               className={`w-full mb-4 flex items-center justify-center py-2 rounded-md ${

@@ -1,41 +1,51 @@
-import { TTicketList, TTicketListResponse } from '@/_types/payment.interface';
+import { TTicketListResponse } from '@/_types/payment.interface';
 import api from '@/lib/services.api';
 import { useQRCode } from 'next-qrcode';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import useSWR from 'swr';
 
 export default function MyTickets({ cbeToken }: { cbeToken: string }) {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [tickets, setTickets] = useState<TTicketList>();
+  // const [loading, setLoading] = useState<boolean>(false);
+  // const [tickets, setTickets] = useState<TTicketList>();
   const { Canvas } = useQRCode();
+  const fetcher = async (url: string, token: string) => {
+    const res: TTicketListResponse = await api.post(url, { token });
+    return res.data.data.tickets;
+  };
 
-  useEffect(() => {
-    let isMounted = true;
+  // Use SWR to fetch the data only when cbeToken is available
+  const { data: tickets, isLoading } = useSWR(
+    cbeToken ? ['/ticket/myTicketsInMiniApp', cbeToken] : null,
+    ([url, token]) => fetcher(url, token)
+  );
 
-    setLoading(true);
-    const fetchData = async () => {
-      try {
-        if (isMounted) {
-          const res: TTicketListResponse = await api.post('/ticket/myTicketsInMiniApp', {
-            token: cbeToken,
-          });
+  // useEffect(() => {
+  //   let isMounted = true;
 
-          setTickets(res?.data?.data?.tickets);
-          setLoading(false);
-        }
-      } catch (error) {
-        if (isMounted) {
-          setLoading(false);
-          console.error('Error fetching tickets:', error);
-        }
-      }
-    };
+  //   setLoading(true);
+  //   const fetchData = async () => {
+  //     try {
+  //       if (isMounted) {
+  //         const res: TTicketListResponse = await api.post('/ticket/myTicketsInMiniApp', {
+  //           token: cbeToken,
+  //         });
 
-    fetchData();
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  //         setTickets(res?.data?.data?.tickets);
+  //         setLoading(false);
+  //       }
+  //     } catch (error) {
+  //       if (isMounted) {
+  //         setLoading(false);
+  //         console.error('Error fetching tickets:', error);
+  //       }
+  //     }
+  //   };
+
+  //   fetchData();
+  //   return () => {
+  //     isMounted = false;
+  //   };
+  // }, []);
 
   return (
     <>
@@ -53,7 +63,7 @@ export default function MyTickets({ cbeToken }: { cbeToken: string }) {
         }}
       /> */}
       <div className="w-full max-w-2xl space-y-4 relative">
-        {loading ? (
+        {isLoading ? (
           <h1>...loading</h1>
         ) : tickets && tickets?.length > 0 ? (
           tickets?.map((ticket) => (
